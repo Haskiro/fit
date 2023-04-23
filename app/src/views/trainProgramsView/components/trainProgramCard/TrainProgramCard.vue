@@ -49,7 +49,6 @@ export default {
 <style lang="scss" scoped>
 .train-card {
   position: relative;
-  width: 580px;
   border: none;
   border-radius: 2px;
   overflow: hidden;

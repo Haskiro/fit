@@ -5,7 +5,7 @@
                 <div class="column__logo">
                     <a href="#" class="column__logo-block logo-block">
                         <div href="#" class="logo-block__logo">
-                            <img src="../assets/logo.svg" alt="" class="logo-block__logo-img">
+                            <img src="./assets/logo.svg" alt="" class="logo-block__logo-img">
                             <p class="logo-block__logo-name">Fit</p>
                         </div>
                         <p class="logo-block__slogan">Надо подкачаться!</p>
@@ -27,9 +27,9 @@
             <div class="footer__column column">
                 <div class="column__socials">
                     <p class="column__text">Наши соц сети</p>
-                    <a href="" class="column__soc-link soc-link"><img src="../assets/instagram-logo.svg" alt="" class="soc-link__icon"><p class="soc-link__text">Instagram</p></a>
-                    <a href="" class="column__soc-link soc-link"><img src="../assets/telegram-logo.svg" alt="" class="soc-link__icon"><p class="soc-link__text">Telegram</p></a>
-                    <a href="" class="column__soc-link soc-link"><img src="../assets/vk-logo.svg" alt="" class="soc-link__icon"><p class="soc-link__text">VK</p></a>
+                    <a href="" class="column__soc-link soc-link"><img src="./assets/instagram-logo.svg" alt="" class="soc-link__icon"><p class="soc-link__text">Instagram</p></a>
+                    <a href="" class="column__soc-link soc-link"><img src="./assets/telegram-logo.svg" alt="" class="soc-link__icon"><p class="soc-link__text">Telegram</p></a>
+                    <a href="" class="column__soc-link soc-link"><img src="./assets/vk-logo.svg" alt="" class="soc-link__icon"><p class="soc-link__text">VK</p></a>
                 </div>
             </div>
             <div class="footer__column column">

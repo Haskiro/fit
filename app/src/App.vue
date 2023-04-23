@@ -1,33 +1,20 @@
 <template>
   <header-component />
-  <train-program-card v-bind="programCard" />
   <router-view />
   <footer-component />
 </template>
 
 <script>
-import HeaderComponent from "./components/HeaderComponent.vue";
-import FooterComponent from "./components/FooterComponent.vue";
-import TrainProgramCard from "./views/trainProgramsView/components/trainProgramCard/TrainProgramCard.vue";
-import BgImage from "@/views/trainProgramsView/assets/bg-image.jpg";
+import HeaderComponent from "@/components/HeaderComponent/HeaderComponent.vue";
+import FooterComponent from "@/components/FooterComponent/FooterComponent.vue";
 
 export default {
   name: "App",
   components: {
     HeaderComponent,
     FooterComponent,
-    TrainProgramCard,
   },
-  data: () => ({
-    programCard: {
-      bgImage: BgImage,
-      title: "Программа тренировок в домашних условиях для мужчин",
-      goal: "Набор массы",
-      bodyType: "Любой",
-      difficulty: "Новичок",
-      isNew: true,
-    },
-  }),
+  data: () => ({}),
 };
 </script>
 
