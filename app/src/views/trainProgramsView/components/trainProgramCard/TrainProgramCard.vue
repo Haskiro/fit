@@ -104,6 +104,10 @@ export default {
       color: white;
       padding: 4px 18px;
       margin-bottom: 0;
+
+      @media (max-width: 670px) {
+        padding: 4px 10px;
+      }
     }
   }
 }

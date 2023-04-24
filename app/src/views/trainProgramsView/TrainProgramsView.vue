@@ -136,6 +136,7 @@ export default {
 .train-programs {
   &__teaser {
     height: calc(100vh - 127px);
+    max-height: 900px;
     width: 100%;
     box-sizing: border-box;
     background: url(./assets/bg-image.jpg);
@@ -143,11 +144,23 @@ export default {
     background-repeat: no-repeat;
     background-size: cover;
     padding: 35px 0px;
+
+    @media (max-width: 1024px) {
+      height: calc(70vh - 127px);
+    }
   }
   &__teaser-body {
     position: relative;
     padding-top: 115px;
     height: 100%;
+
+    @media (max-width: 1024px) {
+      padding-top: 70px;
+    }
+
+    @media (max-width: 560px) {
+      padding-top: 20px;
+    }
   }
   &__text {
     font-style: normal;
@@ -156,11 +169,15 @@ export default {
     line-height: 58px;
     text-align: center;
     color: #ffffff;
+
+    @media (max-width: 768px) {
+      font-size: 24px;
+    }
   }
   &__control {
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 20px;
   }
   &__list {
     display: grid;
@@ -168,15 +185,27 @@ export default {
     gap: 10px;
     margin-bottom: 240px;
     margin-top: 20px;
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+    }
   }
   &__item {
   }
 }
 .control {
-  width: 100%;
+  width: calc(100% - 20px);
   &__search {
     width: 50%;
     position: relative;
+
+    @media (max-width: 1024px) {
+      width: 70%;
+    }
+
+    @media (max-width: 768px) {
+      width: calc(100% - 20px);
+    }
   }
   &__input {
     height: 33px;
@@ -195,14 +224,25 @@ export default {
   }
   &__filters {
     margin-top: 20px;
-    display: flex;
+    display: grid;
+    grid-template-columns: 90px repeat(2, 130px);
     gap: 13px;
+    align-items: center;
+
+    @media (max-width: 420px) {
+      grid-template-columns: repeat(2, 130px);
+    }
   }
   &__text {
     font-weight: 400;
     font-size: 12px;
     line-height: 20px;
-    color: #8b98a4;
+    color: white;
+
+    @media (max-width: 420px) {
+      grid-column: span 2;
+      grid-row: span 1;
+    }
   }
   &__search-button {
     position: absolute;
@@ -220,11 +260,11 @@ export default {
     cursor: pointer;
   }
   &__button {
-    width: 130px;
+    width: 100%;
     height: 28px;
     border: 1px solid #b8c3cd;
     border-radius: 14px;
-    background: inherit;
+    background: rgba(0, 0, 0, 0.5);
     font-weight: 400;
     font-size: 12px;
     line-height: 20px;
