@@ -69,8 +69,8 @@ export default {
 }
 </script>
   
-<style lang="scss">
-@use '../assets/scss/components/form.scss';
+<style lang="scss" scoped>
+@use '@/styles/form.scss';
 
 .form-page {
   font-family: 'Gilroy';
@@ -79,7 +79,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 100vh;
   padding-bottom: 2rem;
 
   &__heading {

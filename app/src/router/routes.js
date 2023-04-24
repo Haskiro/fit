@@ -1,5 +1,5 @@
-import login from "../views/LoginView"
-import signup from "../views/SignupView"
+import login from "@/views/loginView/LoginView"
+import signup from "@/views/signupView/SignupView"
 
 export const routes = [
   {
