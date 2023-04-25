@@ -40,4 +40,12 @@ export default {
 
 <style lang="scss" scoped>
 
+.form-page {
+  &__agreement-link {
+    text-decoration: none;
+    color: #19CBFC;
+    font-weight: 100;
+  }
+} 
+
 </style>
