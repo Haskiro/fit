@@ -1,5 +1,6 @@
 import login from "@/views/loginView/LoginView"
 import signup from "@/views/signupView/SignupView"
+import programDetail from "@/views/programDetailView/ProgramDetailView"
 
 export const routes = [
   {
@@ -11,5 +12,10 @@ export const routes = [
     path: "/signup",
     name: "SignupPage",
     component: signup
+  },
+  {
+    path: "/program",
+    name: "programDetailView",
+    component: programDetail
   },
 ];
