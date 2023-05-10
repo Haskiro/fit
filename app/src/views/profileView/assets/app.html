@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)http://192.168.0.130:8080/train-programs -->
+<html lang=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="http://192.168.0.130:8080/favicon.ico">
+    <title>app</title>
+  <script defer="" src="./app_files/chunk-vendors.js"></script><script defer="" src="./app_files/app.js"></script><style type="text/css">@import url(https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto:wght@400&display=swap);</style><style type="text/css">.header {
+  width: 100%;
+  height: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #022637;
+}
+.header__container {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo-block {
+  width: 190px;
+  height: 116px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-decoration: none;
+}
+.logo-block__logo {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+.logo-block__logo-img {
+  width: 100px;
+  height: 90px;
+}
+.logo-block__logo-name {
+  font-family: "Inter", sans-serif;
+  font-size: 64px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+.logo-block__slogan {
+  width: 100%;
+  height: 26px;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #FFFFFF;
+  margin: 0;
+  padding: 0;
+}
+.nav-block {
+  width: 70%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-block__link {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #FCFCFC;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.nav-block__link--btn {
+  padding: 16px 42px;
+  color: #000000;
+  background-color: #0FB9BC;
+}</style><style type="text/css">@import url(https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto:wght@400&display=swap);</style><style type="text/css">.footer {
+  width: 100%;
+  height: 312px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #022637;
+}
+.footer__container {
+  width: 1400px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.column {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.column__logo, .column__contacts, .column__socials, .column__nav {
+  height: 250px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.column__logo {
+  width: 100%;
+}
+.column__contacts, .column__socials, .column__nav {
+  width: 70%;
+}
+.column__text {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #FCFCFC;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+.column__link {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #FCFCFC;
+  text-decoration: none;
+  padding: 8px 42px;
+}
+.column__link--btn {
+  padding: 16px 42px;
+  background-color: #942B7F;
+  margin-bottom: 8px;
+}
+.soc-link {
+  height: 44px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-decoration: none;
+}
+.soc-link__text {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #FCFCFC;
+  margin-left: 8px;
+}
+.logo-block {
+  width: 190px;
+  height: 116px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-decoration: none;
+}
+.logo-block__logo {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+.logo-block__logo-img {
+  width: 100px;
+  height: 90px;
+}
+.logo-block__logo-name {
+  font-family: "Inter", sans-serif;
+  font-size: 64px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+.logo-block__slogan {
+  width: 100%;
+  height: 26px;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #FFFFFF;
+  margin: 0;
+  padding: 0;
+}</style><style type="text/css">*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+html,
+body,
+div,
+span,
+object,
+iframe,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+code,
+em,
+img,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+b,
+u,
+i,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+main,
+canvas,
+embed,
+footer,
+header,
+nav,
+section,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: none;
+     -moz-text-size-adjust: none;
+          text-size-adjust: none;
+}
+footer,
+header,
+nav,
+section,
+main {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+input {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+.container {
+  max-width: 1400px;
+  margin: 0px auto;
+  padding: 0 20px;
+}
+</style><style type="text/css">#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}</style><style type="text/css">.form[data-v-c7b4b922] {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  max-width: 100%;
+}
+.form__input-container[data-v-c7b4b922] {
+  margin-bottom: 0.625rem;
+}
+.form__input-container[data-v-c7b4b922]:last-of-type {
+  margin-bottom: 0;
+}
+.input[data-v-c7b4b922] {
+  background: none;
+  border-radius: 8px;
+  outline: none;
+  font: inherit;
+  padding: 1rem 1.25rem;
+  color: inherit;
+  border: 2px solid #F8F3E6;
+  width: 100%;
+}
+.input[data-v-c7b4b922]:focus {
+  border-color: #FFD64A;
+}
+.heading[data-v-c7b4b922] {
+  font-family: "Mak", "Gilroy", sans-serif;
+  font-weight: 300;
+  font-size: 9rem;
+  line-height: 10.8rem;
+  color: #FCFCFF;
+}
+.heading--h2[data-v-c7b4b922] {
+  font-size: 7.25rem;
+  line-height: 8.75rem;
+}
+.heading--h3[data-v-c7b4b922] {
+  font-size: 2.5rem;
+  line-height: 3rem;
+}
+.form-page[data-v-c7b4b922] {
+  font-family: "Gilroy";
+  display: flex;
+  background-color: #1E1E1E;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding-bottom: 2rem;
+}
+.form-page__heading[data-v-c7b4b922] {
+  margin-bottom: 3.5rem;
+}
+.form-page__link[data-v-c7b4b922] {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-weight: 300;
+  color: #FFFFFF;
+  text-decoration: none;
+  margin-top: 1.25rem;
+  font-size: 14px;
+  font-family: "Gilroy";
+}
+.form-page__agreement[data-v-c7b4b922] {
+  font-weight: 300;
+  font-size: 0.875rem;
+  line-height: 130%;
+  margin-top: 0.625rem;
+  color: #F8F3E6;
+}
+.form-page__agreement-link[data-v-c7b4b922] {
+  text-decoration: none;
+  color: #19CBFC;
+}
+.form-page__btn[data-v-c7b4b922] {
+  margin-top: 1.25rem;
+  display: inline-block;
+  cursor: pointer;
+  border: none;
+  font: inherit;
+  font-family: "Gilroy", sans-serif;
+  font-weight: 300;
+  background: #0FB9BC;
+  text-decoration: none;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 5px;
+}
+.visually-hidden[data-v-c7b4b922] {
+  display: none;
+}</style><style type="text/css">.train-card[data-v-54974231] {
+  width: 580px;
+  position: relative;
+  border: none;
+  border-radius: 2px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.train-card__icon[data-v-54974231] {
+  position: absolute;
+  right: 0;
+  right: 0;
+  z-index: 5;
+}
+.train-card__image-block[data-v-54974231] {
+  position: relative;
+  width: 100%;
+  height: 230px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.train-card__title[data-v-54974231] {
+  position: absolute;
+  left: 5px;
+  bottom: 10px;
+  font-weight: 400;
+  font-size: 15px;
+  text-transform: uppercase;
+  display: inline-block;
+  background: black;
+  border-radius: 2px;
+  padding: 0px 10px;
+  line-height: 24px;
+  color: white;
+}
+.train-card__list[data-v-54974231] {
+  display: flex;
+  justify-content: space-around;
+  padding: 14px 0 23px;
+  border: 1px solid #00bcd4;
+  border-top: none;
+  border-radius: 2px;
+}
+.train-card__text[data-v-54974231] {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 22px;
+  text-align: center;
+  color: #b2b2b2;
+  margin-bottom: 3px;
+}
+.train-card__text_bg_blue[data-v-54974231] {
+  background: #00bcd4;
+  border-radius: 2px;
+  color: white;
+  padding: 4px 18px;
+  margin-bottom: 0;
+}</style><style type="text/css">@import url(https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto:wght@400;700&display=swap);</style><style type="text/css">.profile-page {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  flex-direction: row;
+  background-color: #EEEEEE;
+}
+.aside-info {
+  width: 316px;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  margin-left: 5%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.aside-info__info-block {
+  width: 90%;
+  height: 130px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.aside-info__avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+.aside-info__name {
+  font-family: "Roboto", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+}
+.aside-info__btn-list {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px 0px 20px 0px;
+  border-top: 1px solid #E5E5E5;
+}
+.aside-info__btn {
+  width: 90%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 8px;
+  border-radius: 4px;
+}
+.aside-info__btn--bg-color-blue {
+  background-color: #E3F2FD;
+}
+.aside-info__btn-icon {
+  margin-left: 10px;
+}
+.aside-info__btn-text {
+  margin-left: 10px;
+}
+.trains-block {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-left: 10%;
+  margin-top: 20px;
+}
+.trains-block__title {
+  font-family: "Roboto", sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #000000;
+  margin-bottom: 20px;
+}
+.trains-block__item {
+  margin-bottom: 20px;
+}</style><style type="text/css">.train-card[data-v-56c99a83] {
+  position: relative;
+  border: none;
+  border-radius: 2px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.train-card__icon[data-v-56c99a83] {
+  position: absolute;
+  right: 0;
+  right: 0;
+  z-index: 5;
+}
+.train-card__image-block[data-v-56c99a83] {
+  position: relative;
+  width: 100%;
+  height: 230px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.train-card__title[data-v-56c99a83] {
+  position: absolute;
+  left: 5px;
+  bottom: 10px;
+  font-weight: 400;
+  font-size: 15px;
+  text-transform: uppercase;
+  display: inline-block;
+  background: black;
+  border-radius: 2px;
+  padding: 0px 10px;
+  line-height: 24px;
+  color: white;
+}
+.train-card__list[data-v-56c99a83] {
+  display: flex;
+  justify-content: space-around;
+  padding: 14px 0 23px;
+  border: 1px solid #00bcd4;
+  border-top: none;
+  border-radius: 2px;
+}
+.train-card__text[data-v-56c99a83] {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 22px;
+  text-align: center;
+  color: #b2b2b2;
+  margin-bottom: 3px;
+}
+.train-card__text_bg_blue[data-v-56c99a83] {
+  background: #00bcd4;
+  border-radius: 2px;
+  color: white;
+  padding: 4px 18px;
+  margin-bottom: 0;
+}
+@media (max-width: 670px) {
+.train-card__text_bg_blue[data-v-56c99a83] {
+    padding: 4px 10px;
+}
+}</style><style type="text/css">.train-programs__teaser[data-v-acac54c2] {
+  height: calc(100vh - 127px);
+  max-height: 900px;
+  width: 100%;
+  box-sizing: border-box;
+  background: url(http://192.168.0.130:8080/img/bg-image.60801cb7.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 35px 0px;
+}
+@media (max-width: 1024px) {
+.train-programs__teaser[data-v-acac54c2] {
+    height: calc(70vh - 127px);
+}
+}
+.train-programs__teaser-body[data-v-acac54c2] {
+  position: relative;
+  padding-top: 115px;
+  height: 100%;
+}
+@media (max-width: 1024px) {
+.train-programs__teaser-body[data-v-acac54c2] {
+    padding-top: 70px;
+}
+}
+@media (max-width: 560px) {
+.train-programs__teaser-body[data-v-acac54c2] {
+    padding-top: 20px;
+}
+}
+.train-programs__text[data-v-acac54c2] {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 58px;
+  text-align: center;
+  color: #ffffff;
+}
+@media (max-width: 768px) {
+.train-programs__text[data-v-acac54c2] {
+    font-size: 24px;
+}
+}
+.train-programs__control[data-v-acac54c2] {
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+}
+.train-programs__list[data-v-acac54c2] {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 240px;
+  margin-top: 20px;
+}
+@media (max-width: 640px) {
+.train-programs__list[data-v-acac54c2] {
+    grid-template-columns: 1fr;
+}
+}
+.control[data-v-acac54c2] {
+  width: calc(100% - 20px);
+}
+.control__search[data-v-acac54c2] {
+  width: 50%;
+  position: relative;
+}
+@media (max-width: 1024px) {
+.control__search[data-v-acac54c2] {
+    width: 70%;
+}
+}
+@media (max-width: 768px) {
+.control__search[data-v-acac54c2] {
+    width: calc(100% - 20px);
+}
+}
+.control__input[data-v-acac54c2] {
+  height: 33px;
+  width: 100%;
+  padding: 0 114px 0 24px;
+  background: #ffffff;
+  border-radius: 2px;
+  border: none;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  color: black;
+}
+.control__input[data-v-acac54c2]::-moz-placeholder {
+  color: #4d4d4d;
+}
+.control__input[data-v-acac54c2]::placeholder {
+  color: #4d4d4d;
+}
+.control__filters[data-v-acac54c2] {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 90px repeat(2, 130px);
+  gap: 13px;
+  align-items: center;
+}
+@media (max-width: 420px) {
+.control__filters[data-v-acac54c2] {
+    grid-template-columns: repeat(2, 130px);
+}
+}
+.control__text[data-v-acac54c2] {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: white;
+}
+@media (max-width: 420px) {
+.control__text[data-v-acac54c2] {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+}
+.control__search-button[data-v-acac54c2] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 89px;
+  height: 33px;
+  background: #0fb9bc;
+  border-radius: 0px 2px 2px 0px;
+  border: none;
+  color: white;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  cursor: pointer;
+}
+.control__button[data-v-acac54c2] {
+  width: 100%;
+  height: 28px;
+  border: 1px solid #b8c3cd;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.5);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #b8c3cd;
+  cursor: pointer;
+}
+.control__button.active[data-v-acac54c2] {
+  background: #b8c3cd;
+  color: black;
+}
+.control__button.active svg[data-v-acac54c2] {
+  fill: black;
+}
+.control__button.active.down svg[data-v-acac54c2] {
+  rotate: 180deg;
+}</style></head>
+  <body>
+    <noscript>
+      <strong>We're sorry but app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app" data-v-app=""><header class="header"><div class="header__container"><a href="http://192.168.0.130:8080/train-programs#" class="header__logo-block logo-block"><div href="#" class="logo-block__logo"><img src="./app_files/logo.bc7fa995.svg" alt="" class="logo-block__logo-img"><p class="logo-block__logo-name">Fit</p></div><p class="logo-block__slogan">Надо подкачаться!</p></a><nav class="header__nav-block nav-block"><a href="http://192.168.0.130:8080/train-programs" class="nav-block__link">Главная</a><a href="http://192.168.0.130:8080/train-programs" class="nav-block__link">О нас</a><a href="http://192.168.0.130:8080/train-programs" class="nav-block__link">Тренеры</a><a href="http://192.168.0.130:8080/train-programs" class="nav-block__link">Программы</a><a href="http://192.168.0.130:8080/train-programs" class="nav-block__link">Отзывы</a><a href="http://192.168.0.130:8080/train-programs" class="nav-block__link">Контакты</a><a href="http://192.168.0.130:8080/train-programs" class="nav-block__link nav-block__link--btn">Профиль</a></nav></div></header><!----><footer class="footer"><div class="footer__container"><div class="footer__column column"><div class="column__logo"><a href="http://192.168.0.130:8080/train-programs#" class="column__logo-block logo-block"><div href="#" class="logo-block__logo"><img src="./app_files/logo.bc7fa995.svg" alt="" class="logo-block__logo-img"><p class="logo-block__logo-name">Fit</p></div><p class="logo-block__slogan">Надо подкачаться!</p></a></div></div><div class="footer__column column"><div class="column__contacts"><p class="column__text">Контакты</p><br><p class="column__text">+7 977 365 84 33</p><p class="column__text">polyfit@gmail.com</p><br><p class="column__text">По всем вопросам обращайтесь по выше указанным контактам</p><br><p class="column__text">Консультация бесплатная</p></div></div><div class="footer__column column"><div class="column__socials"><p class="column__text">Наши соц сети</p><a href="http://192.168.0.130:8080/train-programs" class="column__soc-link soc-link"><img src="./app_files/instagram-logo.191fae11.svg" alt="" class="soc-link__icon"><p class="soc-link__text">Instagram</p></a><a href="http://192.168.0.130:8080/train-programs" class="column__soc-link soc-link"><img src="./app_files/telegram-logo.88f91481.svg" alt="" class="soc-link__icon"><p class="soc-link__text">Telegram</p></a><a href="http://192.168.0.130:8080/train-programs" class="column__soc-link soc-link"><img src="./app_files/vk-logo.fc598ba3.svg" alt="" class="soc-link__icon"><p class="soc-link__text">VK</p></a></div></div><div class="footer__column column"><div class="column__nav"><a href="http://192.168.0.130:8080/train-programs" class="column__link column__link--btn">Главная</a><a href="http://192.168.0.130:8080/train-programs" class="column__link">О нас</a><a href="http://192.168.0.130:8080/train-programs" class="column__link">Тренеры</a><a href="http://192.168.0.130:8080/train-programs" class="column__link">Отзывы</a></div></div></div></footer></div>
+    <!-- built files will be auto injected -->
+  
+
+</body></html>

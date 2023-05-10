@@ -6,9 +6,17 @@
                 <p class="aside-info__name">Name Surname</p>
             </div>
             <div class="aside-info__btn-list">
-                <div class="aside-info__btn">
-                    <img src="" alt="" class="aside-info__btn-icon">
+                <div class="aside-info__btn aside-info__btn--bg-color-blue">
+                    <img src="./assets/trains-icon.svg" alt="" class="aside-info__btn-icon">
                     <p class="aside-info__btn-text">Мои тренировки</p>
+                </div>
+                <div class="aside-info__btn">
+                    <img src="./assets/stat-icon.svg" alt="" class="aside-info__btn-icon">
+                    <p class="aside-info__btn-text">Статистика</p>
+                </div>
+                <div class="aside-info__btn">
+                    <img src="./assets/plan-icon.svg" alt="" class="aside-info__btn-icon">
+                    <p class="aside-info__btn-text">План тренировок</p>
                 </div>
             </div>
         </aside>
@@ -32,7 +40,7 @@ import TrainProgramCard from './components/trainProgramCard/TrainProgramCard.vue
 import bgImage from "./assets/bg-image.jpg";
 
 export default {
-    name: "TrainProgramView",
+    name: "ProfileView",
     components: { TrainProgramCard },
     data: () => ({
         trainProgramList: [
@@ -65,7 +73,7 @@ export default {
 .profile-page {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-content: center;
     flex-direction: row;
     background-color: #EEEEEE;
@@ -79,6 +87,9 @@ export default {
     align-items: flex-start;
     flex-direction: column;
     background-color: #FFFFFF;
+    margin-left: 5%;
+    margin-top: 40px;
+    margin-bottom: 20px;
 
     &__info-block {
         width: 90%;
@@ -112,6 +123,50 @@ export default {
         flex-direction: column;
         padding: 20px 0px 20px 0px;
         border-top: 1px solid #E5E5E5;
+    }
+
+    &__btn {
+        width: 90%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-bottom: 8px;
+        border-radius: 4px;
+
+        &--bg-color-blue {
+            background-color: #E3F2FD;
+        }
+    }
+    
+    &__btn-icon {
+        margin-left: 10px;
+    }
+
+    &__btn-text {
+        margin-left: 10px;
+    }
+}
+
+.trains-block {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-left: 10%;
+    margin-top: 40px;
+
+    &__title {
+        font-family: 'Roboto', sans-serif;
+        font-size: 32px;
+        font-weight: 400;
+        line-height: 24px;
+        color: #000000;
+        margin-bottom: 40px;
+    }
+
+    &__item {
+        margin-bottom: 20px;
     }
 }
 </style>

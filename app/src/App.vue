@@ -1,27 +1,26 @@
 <template>
   <header-component />
   <router-view />
-  <profile-view />
   <footer-component />
 </template>
 
 <script>
-import HeaderComponent from "./components/headerComponent/HeaderComponent.vue";
-import FooterComponent from "./components/footerComponent/FooterComponent.vue";
-import ProfileView from "./views/profileView/ProfileView.vue";
+import HeaderComponent from "@/components/headerComponent/HeaderComponent.vue";
+import FooterComponent from "@/components/footerComponent/FooterComponent.vue";
+
 
 export default {
   name: "App",
   components: {
-    HeaderComponent, 
-    FooterComponent, 
-    ProfileView
-  }
+    HeaderComponent,
+    FooterComponent,
+  },
+  data: () => ({}),
 };
 </script>
 
 <style lang="scss">
-@import url("@/styles/reset.scss");
+@import url("@/styles/global.scss");
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
