@@ -129,6 +129,10 @@ data: () => ({
     @media (max-width: 1024px) {
     height: calc(70vh - 127px);
     }
+
+    @media (max-width: 500px) {
+      height: calc(85vh - 127px);
+    }
   }
 &__teaser-body {
     position: relative;
@@ -150,6 +154,14 @@ data: () => ({
   font-family: 'Rubik';
   margin-top: 24px;
 
+  @media (max-width: 1024px) {
+    font-size: 35px;
+  }
+
+  @media (max-width: 500px) {
+    margin-top: 10px;
+  }
+
 }
 &__description{
   font-family: 'Roboto';
@@ -159,6 +171,10 @@ data: () => ({
   color: #FFFFFF;
   max-width: 520px;
   margin-top: 10px;
+
+  @media (max-width: 1024px) {
+    max-width: 450px;
+  }
 }
 &__btn{
   font-family: 'Roboto', sans-serif;
@@ -170,19 +186,39 @@ data: () => ({
   color: #000000;
   background-color: #0FB9BC;
   margin-top: 146px;
-  margin-right: 570px;
   border: none;
+
+  @media (max-width: 768px) {
+    padding: 15px 20px;
+  }
+
+  @media (max-width: 500px) {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
 }
 &__info-container {
-    display: flex;
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: 500px) {
+    display: block;
+  }
+  
 }
 &__info{
   max-width: 450px;
   columns: 2;
   background: #FFFFFF;
-  padding: 26px 80px 26px 34px;
+  padding: 26px 80px 10px 34px;
   border-radius: 4px;
   column-gap: 80px;
+
+  @media (max-width: 768px) {
+    column-gap: 20px;
+    padding: 26px 20px 10px 20px;
+  }
 }
 &__info-item{
   margin-bottom: 20px;
@@ -222,9 +258,6 @@ data: () => ({
 .bread-crumbs {
     display: flex;
 
-    @media (max-width: 768px) {
-    font-size: 24px;
-    }
     &__links {
         font-size: 14px;
         line-height: 24px;
@@ -232,6 +265,15 @@ data: () => ({
         color: #506690;
         margin-left: 23px;
         text-decoration: none;
+
+        @media (max-width: 500px) {
+          margin-left: 15px;
+        }
+    }
+    &__links:first-child{
+      @media (max-width: 500px) {
+          margin-left: 0;
+        }
     }
   }
 }

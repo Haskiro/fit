@@ -1,18 +1,18 @@
 <template>
-  <header-component />
+  <!-- <header-component /> -->
   <router-view />
-  <footer-component />
+  <!-- <footer-component /> -->
 </template>
 
 <script>
-import HeaderComponent from "@/components/headerComponent/HeaderComponent.vue";
-import FooterComponent from "@/components/footerComponent/FooterComponent.vue";
+// import HeaderComponent from "@/components/headerComponent/HeaderComponent.vue";
+// import FooterComponent from "@/components/footerComponent/FooterComponent.vue";
 
 export default {
   name: "App",
   components: {
-    HeaderComponent,
-    FooterComponent,
+    // HeaderComponent,
+    // FooterComponent,
   },
   data: () => ({}),
 };
