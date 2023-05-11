@@ -90,7 +90,7 @@ export default {
     display: block;
     width: 100%;
     text-align: center;
-    font-weight: 300;
+    font-weight: lighter;
     color: #FFFFFF;
     text-decoration: none;
     margin-top: 1.25rem;
@@ -107,10 +107,6 @@ export default {
     color: #F8F3E6;
   }
 
-  &__agreement-link {
-    text-decoration: none;
-    color: #19CBFC;
-  }
 
   &__btn {
     margin-top: 1.25rem;
