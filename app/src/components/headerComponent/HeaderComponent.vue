@@ -1,21 +1,22 @@
 <template>
     <header class="header">
         <div class="header__container">
-            <a href="#" class="header__logo-block logo-block">
+            <router-link :to="{name: 'PageInDevelopment'}" class="header__logo-block logo-block">
                 <div href="#" class="logo-block__logo">
                     <img src="./assets/logo.svg" alt="" class="logo-block__logo-img">
                     <p class="logo-block__logo-name">Fit</p>
                 </div>
                 <p class="logo-block__slogan">Надо подкачаться!</p>
-            </a>
+            </router-link>
             <nav class="header__nav-block nav-block">
-                <a href="" class="nav-block__link">Главная</a>
-                <a href="" class="nav-block__link">О нас</a>
-                <a href="" class="nav-block__link">Тренеры</a>
-                <a href="" class="nav-block__link">Программы</a>
-                <a href="" class="nav-block__link">Отзывы</a>
-                <a href="" class="nav-block__link">Контакты</a>
-                <a href="" class="nav-block__link nav-block__link--btn">Профиль</a>
+                <i class="nav-block__menu-icon"></i>
+                <router-link :to="{name: 'PageInDevelopment'}" class="nav-block__link">Главная</router-link>
+                <router-link :to="{name: 'PageInDevelopment'}" class="nav-block__link">О нас</router-link>
+                <router-link :to="{name: 'PageInDevelopment'}" class="nav-block__link">Тренеры</router-link>
+                <router-link :to="{name: 'TrainProgramsPage'}" class="nav-block__link">Программы</router-link>
+                <router-link :to="{name: 'PageInDevelopment'}" class="nav-block__link">Отзывы</router-link>
+                <router-link :to="{name: 'PageInDevelopment'}" class="nav-block__link">Контакты</router-link>
+                <router-link :to="{name: 'ProfilePage'}" class="nav-block__link nav-block__link--btn">Профиль</router-link>
             </nav>
         </div>
     </header>
@@ -26,7 +27,6 @@ export default {
 
 }
 </script>
-
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto:wght@400&display=swap');
 
@@ -39,7 +39,7 @@ export default {
     background-color: #022637;
 
     &__container {
-        width: 1400px;
+        width: 90%;
         height: 100%;
         display: flex;
         justify-content: space-between;

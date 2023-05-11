@@ -3,17 +3,17 @@
         <div class="footer__container">
             <div class="footer__column column">
                 <div class="column__logo">
-                    <a href="#" class="column__logo-block logo-block">
+                    <router-link :to="{name: 'PageInDevelopment'}" class="column__logo-block logo-block">
                         <div href="#" class="logo-block__logo">
                             <img src="./assets/logo.svg" alt="" class="logo-block__logo-img">
                             <p class="logo-block__logo-name">Fit</p>
                         </div>
                         <p class="logo-block__slogan">Надо подкачаться!</p>
-                    </a>
+                    </router-link>
                 </div>
             </div>
             <div class="footer__column column">
-                <div class="column__contacts">
+                <div class="column__contacts" id="contacts">
                     <p class="column__text">Контакты</p>
                     <br>
                     <p class="column__text">+7 977 365 84 33</p>
@@ -34,10 +34,10 @@
             </div>
             <div class="footer__column column">
                 <div class="column__nav">
-                    <a href="" class="column__link column__link--btn">Главная</a>
-                    <a href="" class="column__link">О нас</a>
-                    <a href="" class="column__link">Тренеры</a>
-                    <a href="" class="column__link">Отзывы</a>
+                    <router-link :to="{name: 'PageInDevelopment'}" class="column__link column__link--btn">Главная</router-link>
+                    <router-link :to="{name: 'PageInDevelopment'}" class="column__link">О нас</router-link>
+                    <router-link :to="{name: 'PageInDevelopment'}" class="column__link">Тренеры</router-link>
+                    <router-link :to="{name: 'PageInDevelopment'}" class="column__link">Отзывы</router-link>
                 </div>
             </div>
         </div>
@@ -62,7 +62,7 @@ export default {
     background-color: #022637;
 
     &__container {
-        width: 1400px;
+        width: 90%;
         height: 100%;
         display: flex;
         justify-content: space-between;
