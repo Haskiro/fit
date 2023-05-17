@@ -17,6 +17,8 @@ class Program(models.Model):
         MaxValueValidator(7)
     ])
     training_place = models.CharField(verbose_name='Место тренировок', max_length=255)
+    created_at = models.DateTimeField(verbose_name='Дата создания', auto_now_add=True)
+    updated_at = models.DateTimeField(verbose_name='Дата обновления', auto_now=True)
 
     def __str__(self):
         return self.title
