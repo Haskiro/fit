@@ -25,6 +25,7 @@ module.exports = {
 		'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
 		'vue/require-default-prop': 'off',
 		'vue/comment-directive': 'off',
+		'vue/no-multiple-template-root': 0,
 	},
 	globals: {
 		_: true,

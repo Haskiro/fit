@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import TrainProgramCard from './components/trainProgramCard/TrainProgramCard.vue';
+import TrainProgramCard from '@/components/trainProgramCard/TrainProgramCard.vue';
 import bgImage from './assets/bg-image.jpg';
 export default {
 	name: 'TrainProgramView',
@@ -124,7 +124,8 @@ export default {
 <style lang="scss" scoped>
 .train-programs {
 	&__teaser {
-		height: calc(100vh - 127px);
+		// height: calc(100vh - 127px);
+		height: 510px;
 		max-height: 900px;
 		width: 100%;
 		box-sizing: border-box;
@@ -134,9 +135,9 @@ export default {
 		background-size: cover;
 		padding: 35px 0px;
 
-		@media (max-width: 1024px) {
-			height: calc(70vh - 127px);
-		}
+		// @media (max-width: 1024px) {
+		// 	height: calc(70vh - 127px);
+		// }
 	}
 	&__teaser-body {
 		position: relative;
