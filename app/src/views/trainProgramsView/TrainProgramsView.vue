@@ -47,7 +47,7 @@
 			</div>
 		</div>
 		<ul class="train-programs__list container">
-			<li v-for="program in trainProgramList" :key="program.id" class="train-programs__item">
+			<li v-for="program in programs" :key="program.id" class="train-programs__item">
 				<TrainProgramCard v-bind="program" />
 			</li>
 		</ul>
@@ -56,31 +56,13 @@
 
 <script>
 import TrainProgramCard from '@/components/trainProgramCard/TrainProgramCard.vue';
-import bgImage from './assets/bg-image.jpg';
+// import { mapState } from 'vuex';
+import store from '@/store';
+
 export default {
 	name: 'TrainProgramView',
 	components: { TrainProgramCard },
 	data: () => ({
-		trainProgramList: [
-			{
-				id: 1,
-				bgImage: bgImage,
-				title: 'Программа тренировок в домашних условиях для мужчин',
-				goal: 'Набор массы',
-				bodyType: 'Любой',
-				difficulty: 'Новичок',
-				isNew: true,
-			},
-			{
-				id: 1,
-				bgImage: bgImage,
-				title: 'Программа тренировок в домашних условиях для мужчин',
-				goal: 'Набор массы',
-				bodyType: 'Любой',
-				difficulty: 'Новичок',
-				isNew: true,
-			},
-		],
 		filters: {
 			difFilter: {
 				isActive: false,
@@ -90,13 +72,25 @@ export default {
 				isActive: false,
 			},
 		},
+		programs: [],
 	}),
+	// computed: {
+	// 	...mapState({
+	// 		programs: (state) => state.programs.programs,
+	// 	}),
+	// },
+
+	async mounted() {
+		await store.dispatch('programs/fetchAllPrograms');
+		this.programs = store.state.programs.programs;
+	},
 	methods: {
 		handleSearch: function (ev) {
-			console.log(ev.target[0].value);
+			const str = ev.target[0].value;
+			console.log(store.getters['programs/searchProgramsByTitle'](str));
+			this.programs = store.getters['programs/searchProgramsByTitle'](str);
 		},
 		handleFilter: function (type) {
-			console.log(type);
 			switch (type) {
 				case 'dif':
 					if (!this.filters.difFilter.isActive) {
@@ -104,8 +98,10 @@ export default {
 							isActive: true,
 							direction: 'up',
 						};
+						this.programs = store.getters['programs/sortProgramsByComplexity']('up');
 					} else if (this.filters.difFilter.direction === 'up') {
 						this.filters.difFilter.direction = 'down';
+						this.programs = store.getters['programs/sortProgramsByComplexity']('down');
 					} else {
 						this.filters.difFilter = {
 							isActive: false,
@@ -115,6 +111,7 @@ export default {
 					break;
 				case 'new':
 					this.filters.newFilter.isActive = !this.filters.newFilter.isActive;
+					this.programs = store.getters['programs/sortProgramsByNewness'];
 			}
 		},
 	},
