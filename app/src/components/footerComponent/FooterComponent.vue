@@ -5,7 +5,7 @@
 				<div class="column__logo">
 					<router-link :to="{ name: 'PageInDevelopment' }" class="column__logo-block logo-block">
 						<div href="#" class="logo-block__logo">
-							<img src="./assets/logo.svg" alt="" class="logo-block__logo-img" />
+							<img src="@/assets/logo.svg" alt="" class="logo-block__logo-img" />
 							<p class="logo-block__logo-name">Fit</p>
 						</div>
 						<p class="logo-block__slogan">Надо подкачаться!</p>
