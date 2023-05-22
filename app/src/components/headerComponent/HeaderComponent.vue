@@ -9,7 +9,6 @@
 				<p class="logo-block__slogan">Надо подкачаться!</p>
 			</router-link>
 			<nav class="header__nav-block nav-block">
-				<i class="nav-block__menu-icon"></i>
 				<router-link :to="{ name: 'PageInDevelopment' }" class="nav-block__link">Главная</router-link>
 				<router-link :to="{ name: 'PageInDevelopment' }" class="nav-block__link">О нас</router-link>
 				<router-link :to="{ name: 'PageInDevelopment' }" class="nav-block__link">Тренеры</router-link>
@@ -109,6 +108,23 @@ export default {};
 			color: #000000;
 			background-color: #0fb9bc;
 		}
+	}
+}
+
+.sidebar-nav {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+
+	&__link {
+		font-family: 'Roboto', sans-serif;
+		font-size: 18px;
+		font-weight: 400;
+		color: #fcfcfc;
+		text-transform: uppercase;
+		text-decoration: none;
+		margin-bottom: 20px;
 	}
 }
 </style>

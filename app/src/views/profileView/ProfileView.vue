@@ -1,32 +1,34 @@
 <template>
 	<div class="profile-page">
-		<aside class="profile-page__aside-info aside-info">
-			<div class="aside-info__info-block">
-				<img src="./assets/avatar.jpg" alt="" class="aside-info__avatar" />
-				<p class="aside-info__name">Name Surname</p>
+		<div class="profile-page__body container">
+			<aside class="profile-page__aside-info aside-info">
+				<div class="aside-info__info-block">
+					<img src="./assets/avatar.jpg" alt="" class="aside-info__avatar" />
+					<p class="aside-info__name">Name Surname</p>
+				</div>
+				<div class="aside-info__btn-list">
+					<div class="aside-info__btn aside-info__btn--bg-color-blue">
+						<img src="./assets/trains-icon.svg" alt="" class="aside-info__btn-icon" />
+						<p class="aside-info__btn-text">Мои тренировки</p>
+					</div>
+					<div class="aside-info__btn">
+						<img src="./assets/stat-icon.svg" alt="" class="aside-info__btn-icon" />
+						<p class="aside-info__btn-text">Статистика</p>
+					</div>
+					<div class="aside-info__btn">
+						<img src="./assets/plan-icon.svg" alt="" class="aside-info__btn-icon" />
+						<p class="aside-info__btn-text">План тренировок</p>
+					</div>
+				</div>
+			</aside>
+			<div class="profile-page__trains-block trains-block">
+				<h2 class="trains-block__title">Мои тренировки</h2>
+				<ul class="trains-block__list">
+					<li v-for="program in trainProgramList" :key="program.id" class="trains-block__item">
+						<TrainProgramCard v-bind="program" />
+					</li>
+				</ul>
 			</div>
-			<div class="aside-info__btn-list">
-				<div class="aside-info__btn aside-info__btn--bg-color-blue">
-					<img src="./assets/trains-icon.svg" alt="" class="aside-info__btn-icon" />
-					<p class="aside-info__btn-text">Мои тренировки</p>
-				</div>
-				<div class="aside-info__btn">
-					<img src="./assets/stat-icon.svg" alt="" class="aside-info__btn-icon" />
-					<p class="aside-info__btn-text">Статистика</p>
-				</div>
-				<div class="aside-info__btn">
-					<img src="./assets/plan-icon.svg" alt="" class="aside-info__btn-icon" />
-					<p class="aside-info__btn-text">План тренировок</p>
-				</div>
-			</div>
-		</aside>
-		<div class="profile-page__trains-block trains-block">
-			<h2 class="trains-block__title">Мои тренировки</h2>
-			<ul class="trains-block__list">
-				<li v-for="program in trainProgramList" :key="program.id" class="trains-block__item">
-					<TrainProgramCard v-bind="program" />
-				</li>
-			</ul>
 		</div>
 	</div>
 </template>
@@ -67,15 +69,17 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto:wght@400;700&display=swap');
 
 .profile-page {
-	width: 100%;
-	display: flex;
-	justify-content: flex-start;
-	align-content: center;
-	flex-direction: row;
 	background-color: #eeeeee;
 
-	@media (max-width: 1024px) {
-		flex-direction: column;
+	&__body {
+		width: 100%;
+		display: flex;
+		justify-content: flex-start;
+		align-content: center;
+		height: 100%;
+		@media (max-width: 750px) {
+			flex-direction: column;
+		}
 	}
 }
 
@@ -87,9 +91,11 @@ export default {
 	align-items: flex-start;
 	flex-direction: column;
 	background-color: #ffffff;
-	margin-left: 5%;
 	margin-top: 40px;
 	margin-bottom: 20px;
+	@media (max-width: 750px) {
+		width: 100%;
+	}
 
 	@media (max-width: 1024px) {
 		width: 90%;
@@ -103,7 +109,6 @@ export default {
 		align-items: center;
 		padding-top: 20px;
 		padding-bottom: 20px;
-
 		@media (max-width: 1024px) {
 			justify-content: center;
 		}
@@ -116,7 +121,7 @@ export default {
 		margin-left: 12px;
 		margin-right: 12px;
 
-		@media (max-width: 1024px) {
+		@media (max-width: 750px) {
 			margin: 0;
 		}
 
@@ -131,7 +136,7 @@ export default {
 		font-size: 22px;
 		font-weight: 700;
 
-		@media (max-width: 1024px) {
+		@media (max-width: 750px) {
 			margin-left: 20px;
 		}
 		@media (max-width: 560px) {
@@ -179,6 +184,11 @@ export default {
 	flex-direction: column;
 	margin-left: 10%;
 	margin-top: 40px;
+	flex-grow: 2;
+
+	@media (max-width: 750px) {
+		margin-left: 0px;
+	}
 
 	@media (max-width: 1024px) {
 		width: 100%;
@@ -197,10 +207,20 @@ export default {
 	}
 
 	&__list {
-		width: 580px;
+		width: 100%;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 20px;
+		@media (max-width: 1100px) {
+			grid-template-columns: 1fr;
+		}
 
-		@media (max-width: 768px) {
-			width: 100%;
+		@media (max-width: 750px) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@media (max-width: 700px) {
+			grid-template-columns: 1fr;
 		}
 	}
 

@@ -44,7 +44,6 @@ export default {
 
 <style lang="scss" scoped>
 .train-card {
-	width: 580px;
 	position: relative;
 	border: none;
 	border-radius: 2px;
@@ -101,6 +100,10 @@ export default {
 			color: white;
 			padding: 4px 18px;
 			margin-bottom: 0;
+
+			@media (max-width: 670px) {
+				padding: 4px 10px;
+			}
 		}
 	}
 }

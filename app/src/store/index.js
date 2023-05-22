@@ -1,12 +1,12 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-
-Vue.use(Vuex);
+import { createStore } from 'vuex';
+import { programsModule } from './modules/programs';
 
 const debug = process.env.NODE_ENV !== 'production';
 
-const store = new Vuex.Store({
-	modules: {},
+const store = createStore({
+	modules: {
+		programs: programsModule,
+	},
 	strict: debug,
 });
 
