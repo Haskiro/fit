@@ -18,11 +18,6 @@ export const routes = [
 		component: signup,
 	},
 	{
-		path: '/program',
-		name: 'programDetailView',
-		component: programDetail,
-	},
-	{
 		path: '/profile',
 		name: 'ProfilePage',
 		component: ProfileView,
@@ -31,6 +26,11 @@ export const routes = [
 		path: '/train-programs',
 		name: 'TrainProgramsPage',
 		component: TrainPrograms,
+	},
+	{
+		path: '/train-programs/:id',
+		name: 'programDetailView',
+		component: programDetail,
 	},
 	{
 		path: '/',
