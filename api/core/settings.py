@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     #Custom apps
     'authentication',
     'exercise',
-    'program'
+    'program',
 ]
 
 MIDDLEWARE = [
