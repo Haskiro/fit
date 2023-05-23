@@ -48,7 +48,9 @@
 		</div>
 		<ul class="train-programs__list container">
 			<li v-for="program in programs" :key="program.id" class="train-programs__item">
-				<TrainProgramCard v-bind="program" />
+				<router-link :to="`/train-programs/${program.id}`">
+					<TrainProgramCard v-bind="program" />
+				</router-link>
 			</li>
 		</ul>
 	</div>

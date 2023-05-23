@@ -1,6 +1,6 @@
 <template>
 	<div class="train-program">
-		<div class="train-program__teaser">
+		<div class="train-program__teaser" :style="{ backgroundImage: 'url(' + trainProgram.photo + ')' }">
 			<div class="container train-programs__teaser-body">
 				<div ccclass="train-program__bread-crumbs bread-crumbs">
 					<RouterLink v-for="(crumb, i) in breadcrumbs" :key="i" :to="crumb.to" class="bread-crumbs__links">
@@ -36,22 +36,21 @@
 			<p class="train-program__plan-text">Тренировочный план</p>
 		</div>
 		<ul class="train-program__exercise-list exercise-list">
-			<li v-for="(item, i) in trainProgram.exerciseList" :key="i" class="exercise-list__item">
+			<li v-for="(item, i) in trainProgram.exercises" :key="i" class="exercise-list__item">
 				<p class="exercise-list__item-name">
-					{{ item.name }}
+					{{ item.title }}
 				</p>
 				<p class="exercise-list__item-quantity">
-					{{ item.quantity }}
+					{{ item.approaches }}
 				</p>
-				<img :src="'./assets/' + item.img" alt="exercise photo" />
+				<img :src="`${process.env.VUE_APP_HOST + item.photo}`" />
 			</li>
 		</ul>
 	</div>
 </template>
 
 <script>
-import bgImage from './assets/bg-image.jpg';
-// import bgImage2 from "./assets/bg-image2.jpg";
+import store from '@/store';
 export default {
 	name: 'ProgramDetailView',
 	components: {},
@@ -61,63 +60,12 @@ export default {
 			{ name: 'Программы', to: '/#' },
 			{ name: 'Упругая попа', to: '/#' },
 		],
-		trainProgram: {
-			id: 1,
-			bgImage: bgImage,
-			title: 'Фулбоди для мужчин',
-			description:
-				'Комплекс упражнений на всё тело для мужчин. Подходит для начинающих и опытных спортсменов после длительного перерыва. Программа универсальная. Подходит как для набора мышечной массы на начальном этапе, так и для похудения при соответствующем плане питания.',
-			info: [
-				{ title: 'Цель', description: 'Набор массы' },
-				{ title: 'Длительность цикла:', description: '8 недель' },
-				{ title: 'Время тренировки:', description: '75-90 минут' },
-				{ title: 'Место тренировок:', description: 'Спортзал' },
-				{ title: 'Тренировок в неделю:', description: '4 дня' },
-				{ title: 'Уровень подготовки:', description: 'Любитель' },
-			],
-			exerciseList: [
-				{
-					name: 'Приседания со штангой на плечах',
-					quantity: '4х12,10,8,6',
-					img: 'exercises1.jpg',
-				},
-				{
-					name: 'Приседания со штангой на плечах',
-					quantity: '4х12,10,8,6',
-					img: 'exercises1.jpg',
-				},
-				{
-					name: 'Приседания со штангой на плечах',
-					quantity: '4х12,10,8,6',
-					img: 'exercises1.jpg',
-				},
-				{
-					name: 'Приседания со штангой на плечах',
-					quantity: '4х12,10,8,6',
-					img: 'exercises1.jpg',
-				},
-				{
-					name: 'Приседания со штангой на плечах',
-					quantity: '4х12,10,8,6',
-					img: 'exercises1.jpg',
-				},
-				{
-					name: 'Приседания со штангой на плечах',
-					quantity: '4х12,10,8,6',
-					img: 'exercises1.jpg',
-				},
-			],
-		},
-		filters: {
-			difFilter: {
-				isActive: false,
-				direction: 'none    ',
-			},
-			newFilter: {
-				isActive: false,
-			},
-		},
+		trainProgram: {},
 	}),
+	async mounted() {
+		await store.dispatch('programs/fetchProgramById', this.$route.params.id);
+		this.trainProgram = store.state.programs.checkedProgram;
+	},
 };
 </script>
 
@@ -128,7 +76,7 @@ export default {
 		max-height: 900px;
 		width: 100%;
 		box-sizing: border-box;
-		background: url(./assets/bg-image.jpg);
+		// background: url(./assets/bg-image.jpg);
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;

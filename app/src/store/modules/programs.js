@@ -1,13 +1,18 @@
 import programsApi from '@/api/programs';
-import { _transformProgramListItem } from '@/utils/transformProgramListItem';
+import { _mapProgramInfo, _transformProgramListItem } from '@/utils/transformProgram';
+import { PROGRAMS_COMPLEXITY } from '@/consts/maps';
 
 export const programsModule = {
 	state: () => ({
 		programs: [],
+		checkedProgram: {},
 	}),
 	mutations: {
 		setPrograms(state, newPrograms) {
 			state.programs = newPrograms;
+		},
+		setCheckedProgram(state, program) {
+			state.checkedProgram = program;
 		},
 	},
 	actions: {
@@ -15,6 +20,11 @@ export const programsModule = {
 			const res = await programsApi.getPrograms();
 			const programs = res.map((program) => _transformProgramListItem(program));
 			commit('setPrograms', programs);
+		},
+		async fetchProgramById({ commit }, id) {
+			const res = await programsApi.getProgramById(id);
+			const program = _mapProgramInfo(res);
+			commit('setCheckedProgram', program);
 		},
 	},
 	getters: {
@@ -38,10 +48,4 @@ export const programsModule = {
 		},
 	},
 	namespaced: true,
-};
-
-const PROGRAMS_COMPLEXITY = {
-	['Новичок']: 1,
-	['Любитель']: 2,
-	['Профессионал']: 3,
 };

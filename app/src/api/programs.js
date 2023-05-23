@@ -9,18 +9,16 @@ const getPrograms = async () => {
 	}
 };
 
-const getProgramsById = async (id) => {
-	await axios
-		.get(`${process.env.VUE_APP_API_URL}programs/${id}`)
-		.then((response) => {
-			return response.data;
-		})
-		.catch((error) => {
-			console.log(error);
-		});
+const getProgramById = async (id) => {
+	try {
+		const { data } = await axios.get(`${process.env.VUE_APP_API_URL}programs/${id}`);
+		return data;
+	} catch (e) {
+		console.log(e.message);
+	}
 };
 
 export default {
 	getPrograms,
-	getProgramsById,
+	getProgramById,
 };

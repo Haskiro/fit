@@ -1,20 +1,21 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "module": "esnext",
-    "baseUrl": "./",
-    "moduleResolution": "node",
-    "paths": {
-      "@/*": ["src/*"],
-      "@/views": ["src/views/*"],
-      "@/components": ["src/components/*"],
-      "@/assets": ["src/assets/*"],
-      "@/store": ["src/store/*"],
-      "@/utils": ["src/utils/*"],
-      "@/styles": ["src/styles/*"],
-      "@/api": ["src/api/*"],
-      "@/router": ["src/router/*"]
-    },
-    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
-  }
+	"compilerOptions": {
+		"target": "es5",
+		"module": "esnext",
+		"baseUrl": "./",
+		"moduleResolution": "node",
+		"paths": {
+			"@/*": ["src/*"],
+			"@/views": ["src/views/*"],
+			"@/components": ["src/components/*"],
+			"@/assets": ["src/assets/*"],
+			"@/store": ["src/store/*"],
+			"@/utils": ["src/utils/*"],
+			"@/styles": ["src/styles/*"],
+			"@/api": ["src/api/*"],
+			"@/router": ["src/router/*"],
+			"@/consts": ["src/consts/*"]
+		},
+		"lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+	}
 }
