@@ -12,17 +12,18 @@ class IsAdminOrReadOnly(permissions.BasePermission):
     def has_permission(self, request, view):
         if request.method in permissions.SAFE_METHODS:
             return True
- 
+
         return bool(request.user and request.user.is_staff)
+
 
 class ProgramViewSet(ModelViewSet):
     queryset = Program.objects.all()
     serializer_class = ProgramSerializer
-    search_fields = ['title']
+    search_fields = ["title"]
     filter_backends = (SearchFilter,)
     permission_classes = [IsAdminOrReadOnly]
 
-    @action(methods=['POST'], detail=True)
+    @action(methods=["POST"], detail=True)
     def add_exercise_to_program(self, request, pk=None):
         data = request.data
         programs = Program.objects.get(pk=pk)
@@ -31,7 +32,9 @@ class ProgramViewSet(ModelViewSet):
                 exercise = Exercise.objects.get(id=program_id)
                 programs.tracks.add(exercise)
             except Exercise.DoesNotExist:
-                return Response({'error': 'exercise with id=' + program_id + 'does not exist'})
+                return Response(
+                    {"error": "exercise with id=" + program_id + "does not exist"}
+                )
         programs.save()
 
-        return Response({'message': "exercise added"}, 201)
+        return Response({"message": "exercise added"}, 201)
