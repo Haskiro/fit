@@ -6,9 +6,10 @@ from program.models import Program
 
 # Create your models here.
 class User(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField(verbose_name='Email адрес' ,max_length=255, unique=True)
-    first_name = models.CharField(verbose_name='Имя', max_length=255)
-    last_name = models.CharField(verbose_name='Фамилия', max_length=255)
+    email = models.EmailField(verbose_name='Email адрес' ,max_length=255, unique=True, default=None)
+    login = models.CharField(verbose_name='Логин', max_length=255, unique=True, default=None)
+    first_name = models.CharField(verbose_name='Имя', max_length=255, default=None)
+    last_name = models.CharField(verbose_name='Фамилия', max_length=255, default=None)
     photo = models.ImageField(verbose_name='Фото', upload_to='users/photos', default="")
     birthdate = models.DateField(verbose_name='Дата рождения', null=True, default=None)
     programs = models.ManyToManyField(Program)
@@ -17,7 +18,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(verbose_name='Активирован', default=True)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS= ['first_name', 'last_name']
+    REQUIRED_FIELDS= ['login']
 
      # Добавляем параметр related_name
     groups = models.ManyToManyField(
