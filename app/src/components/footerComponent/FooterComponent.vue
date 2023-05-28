@@ -70,12 +70,23 @@ export default {};
 	align-items: center;
 	background-color: #022637;
 
+	@media (max-width: 1024px) {
+		height: auto;
+	}
+
 	&__container {
 		width: 90%;
 		height: 100%;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+
+		@media (max-width: 1024px) {
+			justify-content: flex-start;
+			flex-direction: column;
+			padding-top: 30px;
+			padding-bottom: 30px;
+		}
 	}
 }
 
@@ -86,6 +97,12 @@ export default {};
 	justify-content: center;
 	align-items: center;
 
+	@media (max-width: 1024px) {
+		width: 100%;
+		height: auto;
+		padding: 20px;
+	}
+
 	&__logo,
 	&__contacts,
 	&__socials,
@@ -95,6 +112,10 @@ export default {};
 		justify-content: flex-start;
 		align-items: flex-start;
 		flex-direction: column;
+
+		@media (max-width: 1024px) {
+			height: auto;
+		}
 	}
 
 	&__logo {
@@ -105,6 +126,10 @@ export default {};
 	&__socials,
 	&__nav {
 		width: 70%;
+
+		@media (max-width: 1024px) {
+			width: 100%;
+		}
 	}
 
 	&__text {

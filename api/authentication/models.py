@@ -17,16 +17,16 @@ class UserManager(BaseUserManager):
         user.save()
         return user
 
-    def create_superuser(self, email, password, **extra_fields):
-        extra_fields.setdefault('is_staff', True)
+    def create_superuser(self, email, username, password, **extra_fields):
         extra_fields.setdefault('is_superuser', True)
+        extra_fields.setdefault('is_staff', True)
 
         if extra_fields.get('is_staff') is not True:
             raise ValueError('Superuser must have is_staff=True')
         if extra_fields.get('is_superuser') is not True:
             raise ValueError('Superuser must have is_superuser=True')
 
-        return self.create_user(email, password, **extra_fields)
+        return self.create_user(username, email, password, **extra_fields)
 
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
@@ -39,34 +39,22 @@ class User(AbstractBaseUser, PermissionsMixin):
     programs = models.ManyToManyField(Program, blank=True)
 
 
+
     is_active = models.BooleanField(verbose_name='Активирован', default=True)
+    is_superuser = models.BooleanField(verbose_name='Администратор', default=False)
+    is_staff = models.BooleanField(verbose_name='Работник', default=True)
 
     objects = UserManager()
 
     EMAIL_FIELD = 'email'
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['user_name']
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email']
 
-    groups = models.ManyToManyField(
-        'auth.Group',
-        verbose_name='Группы',
-        blank=True,
-        help_text='Группы, к которым принадлежит пользователь.',
-        related_name='myuser_set',
-        related_query_name='myuser',
-    )
-    # Добавляем параметр related_name
-    user_permissions = models.ManyToManyField(
-        'auth.Permission',
-        verbose_name='Доступы',
-        blank=True,
-        help_text='Доступы пользователя.',
-        related_name='myuser_set',
-        related_query_name='myuser',
-    )
+    
 
     def __str__(self):
         return self.email
 
-    class Meta:
-        db_table = 'users'
+    class Meta: 
+        verbose_name = 'Пользователь'
+        verbose_name_plural = 'Пользователи'

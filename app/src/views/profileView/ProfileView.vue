@@ -97,6 +97,10 @@ export default {
 		width: 100%;
 	}
 
+	@media (max-width: 1024px) {
+		width: 90%;
+	}
+
 	&__info-block {
 		width: 90%;
 		height: 130px;
@@ -184,6 +188,13 @@ export default {
 
 	@media (max-width: 750px) {
 		margin-left: 0px;
+	}
+
+	@media (max-width: 1024px) {
+		width: 100%;
+		justify-content: center;
+		align-items: center;
+		margin-left: 0;
 	}
 
 	&__title {

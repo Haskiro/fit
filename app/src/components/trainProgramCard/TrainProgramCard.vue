@@ -25,7 +25,6 @@
 
 <script>
 import NewIconSrc from './assets/new-icon.svg';
-
 export default {
 	name: 'TrainProgramCard',
 	components: {},
