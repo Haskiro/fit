@@ -6,4 +6,4 @@
 
 `pip install -r requirements.txt`
 
-`admin: admin, paыsword: admin`
+`admin: admin, password: admin`
