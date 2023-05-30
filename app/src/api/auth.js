@@ -3,7 +3,7 @@ import store from '@/store';
 
 // создаем экземпляр axios с заданными параметрами
 export const HTTP = axios.create({
-	baseURL: 'http://localhost:8000',
+	baseURL: `${process.env.VUE_APP_API_URL}`,
 	headers: {
 		'Content-Type': 'application/json',
 	},
@@ -13,7 +13,7 @@ HTTP.interceptors.request.use(
 	(config) => {
 		const accessToken = localStorage.getItem('access_token');
 		if (accessToken) {
-			config.headers.Authorization = `Bearer ${accessToken}`;
+			config.headers.Authorization = `${accessToken}`;
 		}
 		return config;
 	},

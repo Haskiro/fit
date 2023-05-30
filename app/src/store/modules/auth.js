@@ -1,4 +1,5 @@
 import axios from 'axios';
+// import { getUser } from '@/api/auth';
 const state = {
 	accessToken: localStorage.getItem('access_token') || null,
 	refreshToken: localStorage.getItem('refresh_token') || null,
@@ -16,7 +17,7 @@ const actions = {
 		return new Promise((resolve, reject) => {
 			commit('auth_request');
 			axios({
-				url: 'http://127.0.0.1:8000/api/auth/login/',
+				url: `${process.env.VUE_APP_API_URL}auth/login/`,
 				method: 'POST',
 				data: user,
 			})
@@ -27,6 +28,13 @@ const actions = {
 					localStorage.setItem('refresh_token', refreshToken);
 					axios.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
 					commit('auth_success', accessToken, refreshToken);
+					// getUser()
+					// 	.then((userResponse) => {
+					// 		console.log(userResponse.data);
+					// 	})
+					// 	.catch((error) => {
+					// 		console.error(error);
+					// 	});
 					resolve(response);
 				})
 				.catch((error) => {
@@ -42,7 +50,7 @@ const actions = {
 		debugger;
 		return new Promise((resolve, reject) => {
 			axios({
-				url: 'http://127.0.0.1:8000/api/auth/register/',
+				url: `${process.env.VUE_APP_API_URL}auth/login/`,
 				method: 'POST',
 				data: data,
 			})

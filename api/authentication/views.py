@@ -45,14 +45,14 @@ class UserViewSet(ModelViewSet):
 
         refresh = RefreshToken.for_user(user)
         response = Response()
-        response.data = {'access': str(refresh.access_token)}
+        response.data = {'access': str(refresh.access_token), 'refresh': str(refresh)}
         return response
         
-    # @action(methods=['GET'], detail=False, permission_classes=[IsAuthenticated], url_path='me')
-    # def getUser(self, request):
-    #     user = request.user
-    #     data = self.serializer_class(user).data
-    #     return Response(data)
+    @action(methods=['GET'], detail=False, permission_classes=[IsAuthenticated], url_path='me')
+    def getUser(self, request):
+        user = request.user
+        data = self.serializer_class(user).data
+        return Response(data)
 
     # @action(methods=['PATCH'], detail=False,
     #         permission_classes=[IsAuthenticated], url_path='update')
