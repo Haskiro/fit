@@ -1,4 +1,5 @@
 import axios from 'axios';
+// import { getUser } from '@/api/auth';
 const state = {
 	accessToken: localStorage.getItem('access_token') || null,
 	refreshToken: localStorage.getItem('refresh_token') || null,
@@ -27,6 +28,13 @@ const actions = {
 					localStorage.setItem('refresh_token', refreshToken);
 					axios.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
 					commit('auth_success', accessToken, refreshToken);
+					// getUser()
+					// 	.then((userResponse) => {
+					// 		console.log(userResponse.data);
+					// 	})
+					// 	.catch((error) => {
+					// 		console.error(error);
+					// 	});
 					resolve(response);
 				})
 				.catch((error) => {

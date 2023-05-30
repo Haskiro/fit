@@ -42,11 +42,15 @@ export default {
 				username: '',
 				password: '',
 				email: '',
+				first_name: '',
+				last_name: '',
 			},
 			buttonText: 'Регистрация',
 			inputs: [
 				{ type: 'text', placeholder: 'Введите никнейм', name: 'username' },
 				{ type: 'email', placeholder: 'Введите email', name: 'email' },
+				{ type: 'text', placeholder: 'Имя', name: 'first_name' },
+				{ type: 'text', placeholder: 'Фамилия', name: 'last_name' },
 				{ type: 'password', placeholder: 'Введите пароль', name: 'password' },
 			],
 			additional: {
