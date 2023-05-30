@@ -16,7 +16,7 @@ const actions = {
 		return new Promise((resolve, reject) => {
 			commit('auth_request');
 			axios({
-				url: 'http://127.0.0.1:8000/api/auth/login/',
+				url: `${process.env.VUE_APP_API_URL}auth/login/`,
 				method: 'POST',
 				data: user,
 			})
@@ -42,7 +42,7 @@ const actions = {
 		debugger;
 		return new Promise((resolve, reject) => {
 			axios({
-				url: 'http://127.0.0.1:8000/api/auth/register/',
+				url: `${process.env.VUE_APP_API_URL}auth/login/`,
 				method: 'POST',
 				data: data,
 			})
