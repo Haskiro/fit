@@ -6,7 +6,7 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
-from django.urls import reverse, reverse_lazy
+from program.models import Program
 
 
 
@@ -54,39 +54,25 @@ class UserViewSet(ModelViewSet):
         data = self.serializer_class(user).data
         return Response(data)
 
-    # @action(methods=['PATCH'], detail=False,
-    #         permission_classes=[IsAuthenticated], url_path='update')
-    # def user_update(self, request):
-    #     user = request.user
-    #     currentData = self.serializer_class(user).data
-    #     # serializer.is_valid(raise_exception=True)
-    #     data = request.data
-    #     if 'email' in data and len(data.get('email')) > 0 and currentData["email"] != data["email"]:
-    #         try:
-    #             User.objects.get(
-    #                 email=data['email'])
-    #             raise ParseError({'message': 'Email already taken'})
-    #         except User.DoesNotExist:
-    #             pass
-    #     user.email = data['email']
-    #     user.first_name = data['first_name']
-    #     user.last_name = data['last_name']
-    #     user.bio = data['bio']
-    #     print(user.first_name)
-    #     user.save()
+    @action(methods=["POST"], detail=False, permission_classes=[IsAuthenticated])
+    def add_program_to_user(self, request):
+        data = request.data
+        user = request.user
+        currentData = self.serializer_class(user).data
+        for program_id in data:
+            try:
+                if (program_id not in currentData['programs']):
+                    program = Program.objects.get(id=program_id)
+                    currentData['programs'].append(program)
+                else:
+                    return Response({"error": "program with id=" + str(program_id) + " already added"}, 402)
 
-    #     return Response({'message': "user updated"})
+            except Program.DoesNotExist:
+                return Response(
+                    {"error": "program with id=" + program_id + "does not exist"}
+                )
+        user.programs.set(currentData['programs'])
+        user.save()
         
 
-    # @action(methods=['DELETE'], detail=False,
-    #         permission_classes=[IsAuthenticated])
-    # def delete(self, request):
-    #     user = request.user
-    #     data = self.serializer_class(user).data
-    #     instance = User.objects.get(email=data["email"])
-    #     print(instance)
-    #     instance.delete()
-
-    #     return Response({'message': "user deleted"})
-
-# Create your views here.
+        return Response({"message": "programs added"}, 201)

@@ -180,6 +180,9 @@ export default {
 		}
 	}
 	&__item {
+		& a {
+			text-decoration: none;
+		}
 	}
 }
 .control {

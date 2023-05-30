@@ -35,17 +35,21 @@
 		<div class="train-program__plan">
 			<p class="train-program__plan-text">Тренировочный план</p>
 		</div>
-		<ul class="train-program__exercise-list exercise-list">
-			<li v-for="(item, i) in trainProgram.exercises" :key="i" class="exercise-list__item">
+		<ul
+			v-if="trainProgram.exercises_data && trainProgram.exercises_data.length > 0"
+			class="train-program__exercise-list exercise-list"
+		>
+			<li v-for="(item, i) in trainProgram.exercises_data" :key="i" class="exercise-list__item">
 				<p class="exercise-list__item-name">
 					{{ item.title }}
 				</p>
 				<p class="exercise-list__item-quantity">
 					{{ item.approaches }}
 				</p>
-				<img :src="`${process.env.VUE_APP_HOST + item.photo}`" />
+				<img :src="`${host + item.photo}`" />
 			</li>
 		</ul>
+		<p v-else class="train-program__not-found">Ни одного упражнения не найдено</p>
 	</div>
 </template>
 
@@ -61,7 +65,13 @@ export default {
 			{ name: 'Упругая попа', to: '/#' },
 		],
 		trainProgram: {},
+		host: process.env.VUE_APP_HOST,
 	}),
+	computed: {
+		isExerciseListVisible() {
+			return this.trainProgram.exercises_data && this.trainProgram.exercises_data.length > 0;
+		},
+	},
 	async mounted() {
 		await store.dispatch('programs/fetchProgramById', this.$route.params.id);
 		this.trainProgram = store.state.programs.checkedProgram;
@@ -71,6 +81,12 @@ export default {
 
 <style lang="scss" scoped>
 .train-program {
+	&__not-found {
+		text-align: center;
+		padding: 20px;
+		padding-bottom: 30px;
+		font-size: 30px;
+	}
 	&__teaser {
 		height: calc(90vh - 127px);
 		max-height: 900px;
