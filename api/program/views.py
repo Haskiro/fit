@@ -23,18 +23,46 @@ class ProgramViewSet(ModelViewSet):
     filter_backends = (SearchFilter,)
     permission_classes = [IsAdminOrReadOnly]
 
-    @action(methods=["POST"], detail=True)
+    @action(methods=["POST"], detail=False)
     def add_exercise_to_program(self, request, pk=None):
-        data = request.data
-        programs = Program.objects.get(pk=pk)
-        for program_id in data:
+        data = request.data,
+        program = Program.objects.get(pk=pk)
+        print(program)
+        currentData = self.serializer_class(id=pk).data
+        for exercise_id in data:
             try:
-                exercise = Exercise.objects.get(id=program_id)
-                programs.tracks.add(exercise)
+                if (exercise_id not in currentData['exercises']):
+                    exercise = Exercise.objects.get(id=exercise_id)
+                    currentData['exercises'].append(exercise)
+                else:
+                    return Response({"error": "exercise with id=" + str(exercise_id) + " already added"}, 402)
             except Exercise.DoesNotExist:
                 return Response(
-                    {"error": "exercise with id=" + program_id + "does not exist"}
+                    {"error": "exercise with id=" + exercise_id + "does not exist"}, 402
                 )
-        programs.save()
+        program.exercises.set(currentData['exercises'])
+        program.save()
 
-        return Response({"message": "exercise added"}, 201)
+        return Response({"message": "exercises added"}, 201)
+
+    # def add_program_to_user(self, request):
+    #     data = request.data
+    #     user = request.user
+    #     currentData = self.serializer_class(user).data
+    #     for program_id in data:
+    #         try:
+    #             if (program_id not in currentData['programs']):
+    #                 program = Program.objects.get(id=program_id)
+    #                 currentData['programs'].append(program)
+    #             else:
+    #                 return Response({"error": "program with id=" + str(program_id) + " already added"}, 402)
+
+    #         except Program.DoesNotExist:
+    #             return Response(
+    #                 {"error": "program with id=" + program_id + "does not exist"}
+    #             )
+    #     user.programs.set(currentData['programs'])
+    #     user.save()
+        
+
+    #     return Response({"message": "programs added"}, 201)
