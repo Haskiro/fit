@@ -32,11 +32,12 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     username = models.CharField(verbose_name='Имя пользователя', max_length=255, unique=True, default=None)
 
-    first_name = models.CharField(max_length=30, blank=True)
-    last_name = models.CharField(max_length=40, blank=True)
+    first_name = models.CharField(max_length=30, null=True)
+    last_name = models.CharField(max_length=40, null=True)
     photo = models.ImageField(verbose_name='Фото', upload_to='users/photos', default="", blank=True)
     birthdate = models.DateField(verbose_name='Дата рождения', null=True, default=None, blank=True)
-    programs = models.ManyToManyField(Program, blank=True)
+    # programs = models.ManyToManyField(Program, blank=True)
+    programs = models.ManyToManyField( verbose_name='Программы', to=Program, related_name='programs', blank=True)
 
 
 
