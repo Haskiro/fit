@@ -3,7 +3,7 @@ import store from '@/store';
 
 // создаем экземпляр axios с заданными параметрами
 export const HTTP = axios.create({
-	baseURL: '/api/',
+	baseURL: 'http://localhost:8000',
 	headers: {
 		'Content-Type': 'application/json',
 	},

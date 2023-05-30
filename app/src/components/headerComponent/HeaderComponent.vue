@@ -19,8 +19,14 @@
 				<router-link :to="{ name: 'TrainProgramsPage' }" class="nav-block__link">Программы</router-link>
 				<router-link :to="{ name: 'PageInDevelopment' }" class="nav-block__link">Отзывы</router-link>
 				<router-link :to="{ name: 'PageInDevelopment' }" class="nav-block__link">Контакты</router-link>
-				<router-link :to="{ name: 'ProfilePage' }" class="nav-block__link nav-block__link--btn"
+				<router-link
+					v-if="isLoggedIn"
+					:to="{ name: 'ProfilePage' }"
+					class="nav-block__link nav-block__link--btn"
 					>Профиль</router-link
+				>
+				<router-link v-else :to="{ name: 'LoginPage' }" class="nav-block__link nav-block__link--btn"
+					>Войти</router-link
 				>
 			</nav>
 		</div>
@@ -28,7 +34,16 @@
 </template>
 
 <script>
-export default {};
+export default {
+	computed: {
+		isLoggedIn() {
+			return this.$store.getters.isLoggedIn;
+		},
+		user() {
+			return this.$store.state.auth.user;
+		},
+	},
+};
 </script>
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto:wght@400&display=swap');

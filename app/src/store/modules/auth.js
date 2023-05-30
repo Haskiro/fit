@@ -16,7 +16,7 @@ const actions = {
 		return new Promise((resolve, reject) => {
 			commit('auth_request');
 			axios({
-				url: '',
+				url: 'http://127.0.0.1:8000/api/auth/login/',
 				method: 'POST',
 				data: user,
 			})
@@ -38,21 +38,21 @@ const actions = {
 		});
 	},
 	// Регистрация
-	register(user) {
-		// prettier-ignore
+	register(data) {
+		debugger;
 		return new Promise((resolve, reject) => {
-      axios({
-        url: '',
-        method: 'POST',
-        data: user,
-      })
-        .then((response) => {
-          resolve(response);
-        })
-        .catch((error) => {
-          reject(error);
-        });
-    });
+			axios({
+				url: 'http://127.0.0.1:8000/api/auth/register/',
+				method: 'POST',
+				data: data,
+			})
+				.then((response) => {
+					resolve(response);
+				})
+				.catch((error) => {
+					reject(error);
+				});
+		});
 	},
 	// Выход
 	logout({ commit }) {
