@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { _transformProgramListItem } from '@/utils/transformProgram';
 // import { getUser } from '@/api/user';
 const state = {
 	accessToken: localStorage.getItem('access_token') || null,
@@ -12,8 +13,13 @@ const getters = {
 	authStatus: (state) => state.status,
 	currentUser: (state) => state.user,
 };
-export function getUser() {
-	return axios.get(`${process.env.VUE_APP_API_URL}auth/me/`);
+export async function getUser(token) {
+	const perem = await axios.get(`${process.env.VUE_APP_API_URL}auth/me/`, {
+		headers: {
+			Authorization: 'Bearer ' + token,
+		},
+	});
+	return perem.data;
 }
 
 const actions = {
@@ -101,6 +107,10 @@ const actions = {
 				});
 		});
 	},
+	async getUserData({ commit, state }) {
+		const res = await getUser(state.accessToken);
+		commit('set_user', res);
+	},
 };
 
 const mutations = {
@@ -126,8 +136,12 @@ const mutations = {
 	},
 	set_user(state, user) {
 		// Добавляем мутацию для сохранения данных о пользователе в состояние
-		state.user = user;
-		debugger;
+		state.user = {
+			...user,
+			photo: user.photo ? process.env.VUE_APP_HOST + user.photo : 'avatar.png',
+			programs_data: user.programs_data.map(_transformProgramListItem),
+		};
+		// debugger;
 	},
 };
 

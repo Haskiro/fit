@@ -3,8 +3,8 @@
 		<div class="profile-page__body container">
 			<aside class="profile-page__aside-info aside-info">
 				<div class="aside-info__info-block">
-					<img src="./assets/avatar.jpg" alt="" class="aside-info__avatar" />
-					<p class="aside-info__name">Name Surname</p>
+					<img :src="user.photo" alt="" class="aside-info__avatar" />
+					<p class="aside-info__name">{{ user.first_name + ' ' + user.last_name }}</p>
 				</div>
 				<div class="aside-info__btn-list">
 					<div class="aside-info__btn aside-info__btn--bg-color-blue">
@@ -24,8 +24,10 @@
 			<div class="profile-page__trains-block trains-block">
 				<h2 class="trains-block__title">Мои тренировки</h2>
 				<ul class="trains-block__list">
-					<li v-for="program in trainProgramList" :key="program.id" class="trains-block__item">
-						<TrainProgramCard v-bind="program" />
+					<li v-for="program in user.programs_data" :key="program.id" class="trains-block__item">
+						<router-link :to="`/train-programs/${program.id}`">
+							<TrainProgramCard v-bind="program" />
+						</router-link>
 					</li>
 				</ul>
 			</div>
@@ -35,33 +37,19 @@
 
 <script>
 import TrainProgramCard from '@/components/trainProgramCard/TrainProgramCard.vue';
-import bgImage from './assets/bg-image.jpg';
+import store from '@/store';
 
 export default {
 	name: 'ProfileView',
 	components: { TrainProgramCard },
 	data: () => ({
-		trainProgramList: [
-			{
-				id: 1,
-				bgImage: bgImage,
-				title: 'Программа тренировок в домашних условиях для мужчин',
-				goal: 'Набор массы',
-				bodyType: 'Любой',
-				difficulty: 'Новичок',
-				isNew: true,
-			},
-			{
-				id: 1,
-				bgImage: bgImage,
-				title: 'Программа тренировок в домашних условиях для мужчин',
-				goal: 'Набор массы',
-				bodyType: 'Любой',
-				difficulty: 'Новичок',
-				isNew: true,
-			},
-		],
+		user: {},
 	}),
+	async mounted() {
+		await store.dispatch('getUserData');
+		this.user = store.getters['currentUser'];
+		console.log(this.user);
+	},
 };
 </script>
 
@@ -226,6 +214,9 @@ export default {
 
 	&__item {
 		margin-bottom: 20px;
+		& a {
+			text-decoration: none;
+		}
 	}
 }
 </style>
