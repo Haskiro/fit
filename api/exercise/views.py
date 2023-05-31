@@ -13,9 +13,10 @@ class IsAdminOrReadOnly(permissions.BasePermission):
             return True
         return bool(request.user and request.user.is_staff)
 
+
 class ExerciseViewSet(ModelViewSet):
     queryset = Exercise.objects.all()
     serializer_class = ExerciseSerializer
-    search_fields = ['title']
+    search_fields = ["title"]
     filter_backends = (SearchFilter,)
     permission_classes = [IsAdminOrReadOnly]

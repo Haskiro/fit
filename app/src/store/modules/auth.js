@@ -127,6 +127,7 @@ const mutations = {
 	set_user(state, user) {
 		// Добавляем мутацию для сохранения данных о пользователе в состояние
 		state.user = user;
+		debugger;
 	},
 };
 

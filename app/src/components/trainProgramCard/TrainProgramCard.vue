@@ -94,6 +94,7 @@ export default {
 		text-align: center;
 		color: #b2b2b2;
 		margin-bottom: 3px;
+		text-decoration: none;
 		&_bg_blue {
 			background: #00bcd4;
 			border-radius: 2px;
