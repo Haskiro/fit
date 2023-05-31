@@ -1,15 +1,20 @@
 import axios from 'axios';
-// import { getUser } from '@/api/auth';
+// import { getUser } from '@/api/user';
 const state = {
 	accessToken: localStorage.getItem('access_token') || null,
 	refreshToken: localStorage.getItem('refresh_token') || null,
 	status: '',
+	user: null,
 };
 
 const getters = {
 	isLoggedIn: (state) => !!state.accessToken,
 	authStatus: (state) => state.status,
+	currentUser: (state) => state.user,
 };
+export function getUser() {
+	return axios.get(`${process.env.VUE_APP_API_URL}auth/me/`);
+}
 
 const actions = {
 	// Авторизация
@@ -28,13 +33,14 @@ const actions = {
 					localStorage.setItem('refresh_token', refreshToken);
 					axios.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
 					commit('auth_success', accessToken, refreshToken);
-					// getUser()
-					// 	.then((userResponse) => {
-					// 		console.log(userResponse.data);
-					// 	})
-					// 	.catch((error) => {
-					// 		console.error(error);
-					// 	});
+					getUser()
+						.then((userResponse) => {
+							const user = userResponse.data;
+							commit('set_user', user); // Сохраняем данные о пользователе в состояние
+						})
+						.catch((error) => {
+							console.error(error);
+						});
 					resolve(response);
 				})
 				.catch((error) => {
@@ -50,7 +56,7 @@ const actions = {
 		debugger;
 		return new Promise((resolve, reject) => {
 			axios({
-				url: `${process.env.VUE_APP_API_URL}auth/login/`,
+				url: `${process.env.VUE_APP_API_URL}auth//`,
 				method: 'POST',
 				data: data,
 			})
@@ -113,9 +119,14 @@ const mutations = {
 		state.status = '';
 		state.accessToken = null;
 		state.refreshToken = null;
+		state.user = null;
 	},
 	refresh_success(state, newAccessToken) {
 		state.accessToken = newAccessToken;
+	},
+	set_user(state, user) {
+		// Добавляем мутацию для сохранения данных о пользователе в состояние
+		state.user = user;
 	},
 };
 
