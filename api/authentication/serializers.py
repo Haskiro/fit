@@ -6,7 +6,7 @@ class UserSerializer(serializers.ModelSerializer):
     programs_data = ProgramSerializer(source='programs', many=True, read_only=True)
     class Meta:
         model = User
-        fields = ['id','email', 'username', 'password', 'first_name', 'last_name', 'programs_data']
+        fields = ['id','email', 'username', 'password', 'first_name', 'last_name', 'programs_data', 'photo']
         extra_kwargs = {
             'password': {'write_only': True}
         }
