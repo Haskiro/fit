@@ -17,7 +17,7 @@
 				/>
 			</div>
 
-			<RouterLink to="#" class="form-page__agreement-link"> Забыли пароль? </RouterLink>
+			<RouterLink to="#" class="form-page__link"> Забыли пароль? </RouterLink>
 
 			<input type="submit" :value="buttonText" class="form-page__btn btn btn--filled btn--huge" />
 		</form>
@@ -56,7 +56,6 @@ export default {
 			this.$store
 				.dispatch('login', this.form)
 				.then((response) => {
-					// Авторизация пользователя прошла успешно
 					console.log(response);
 					this.$router.push('/');
 				})
@@ -71,7 +70,7 @@ export default {
 <style lang="scss" scoped>
 @use '@/styles/form.scss';
 .form-page {
-	font-family: 'Gilroy';
+	font-family: 'Roboto', sans-serif;
 	display: flex;
 	background-color: #1e1e1e;
 	flex-direction: column;
@@ -89,11 +88,11 @@ export default {
 		width: 100%;
 		text-align: center;
 		font-weight: lighter;
-		color: #ffffff;
+		color: #f8f3e6;
 		text-decoration: none;
 		margin-top: 1.25rem;
 		font-size: 14px;
-		font-family: 'Gilroy';
+		font-family: 'Roboto', sans-serif;
 	}
 
 	&__agreement {
@@ -110,8 +109,8 @@ export default {
 		cursor: pointer;
 		border: none;
 		font: inherit;
-		font-family: 'Gilroy', sans-serif;
-		font-weight: 300;
+		font-family: 'Roboto', sans-serif;
+		font-weight: 500;
 		background: #0fb9bc;
 		text-decoration: none;
 		padding-top: 20px;
