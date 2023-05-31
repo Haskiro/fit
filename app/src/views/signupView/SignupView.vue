@@ -90,7 +90,7 @@ export default {
 			// переход на следующую страницу
 			//work
 			axios
-				.post('http://localhost:8000/api/auth/register/', this.form)
+				.post(`${process.env.VUE_APP_API_URL}auth/register/`, this.form)
 				.then(() => {
 					this.$router.push('/login');
 				})

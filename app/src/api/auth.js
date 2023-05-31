@@ -9,6 +9,7 @@ export const HTTP = axios.create({
 	},
 });
 
+debugger;
 HTTP.interceptors.request.use(
 	(config) => {
 		const accessToken = localStorage.getItem('access_token');
