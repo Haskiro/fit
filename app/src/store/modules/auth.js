@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import { getUser } from '@/api/user';
 const state = {
 	accessToken: localStorage.getItem('access_token') || null,
 	refreshToken: localStorage.getItem('refresh_token') || null,
@@ -125,9 +124,7 @@ const mutations = {
 		state.accessToken = newAccessToken;
 	},
 	set_user(state, user) {
-		// Добавляем мутацию для сохранения данных о пользователе в состояние
 		state.user = user;
-		debugger;
 	},
 };
 

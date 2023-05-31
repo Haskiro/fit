@@ -37,7 +37,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     photo = models.ImageField(verbose_name='Фото', upload_to='users/photos', default="", blank=True)
     birthdate = models.DateField(verbose_name='Дата рождения', null=True, default=None, blank=True)
     # programs = models.ManyToManyField(Program, blank=True)
-    programs = models.ManyToManyField( verbose_name='Программы', to=Program, related_name='programs', blank=True, default=[])
+    programs = models.ManyToManyField( verbose_name='Программы', to=Program, related_name='programs', blank=True, default=[], null=True)
 
 
 

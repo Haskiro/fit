@@ -17,22 +17,21 @@
 				/>
 			</div>
 
-			<p>
+			<p class="form-page__link-text">
 				Регистрируясь, вы соглашаетесь с
-				<NuxtLink to="#" class="form-page__agreement-link"> правилами пользовательского соглашения </NuxtLink>
+				<NuxtLink to="#" class="form-page__link-link"> правилами пользовательского соглашения </NuxtLink>
 			</p>
 
 			<input type="submit" :value="buttonText" class="form-page__btn btn btn--filled btn--huge" />
 		</form>
 
-		<NuxtLink v-if="additional.hasOwnProperty('href')" :to="additional.href" class="form-page__link">
+		<RouterLink v-if="additional.hasOwnProperty('href')" :to="additional.href" class="form-page__link">
 			{{ additional.text }}
-		</NuxtLink>
+		</RouterLink>
 	</div>
 </template>
 
 <script>
-// import store from '@/store';
 import axios from 'axios';
 export default {
 	name: 'SignupPage',
@@ -61,34 +60,6 @@ export default {
 	},
 	methods: {
 		register() {
-			debugger;
-			// new Promise((resolve, reject) => {
-			// 	axios({
-			// 		url: 'http://127.0.0.1:8000/api/auth/register/',
-			// 		method: 'POST',
-			// 		data: this.form,
-			// 	})
-			// 		.then((response) => {
-			// 			resolve(response);
-			// 		})
-			// 		.catch((error) => {
-			// 			reject(error);
-			// 		});
-			// });
-			// this.$store
-			// 	.dispatch('register', this.form)
-			// 	.then((response) => {
-			// 		// Регистрация пользователя прошла успешно
-			// 		console(response);
-			// 		this.$router.push('/login');
-			// 	})
-			// 	.catch((error) => {
-			// 		console(error);
-			// 		this.error = error.response.data;
-			// 	});
-			// await store.dispatch('auth/register', this.form);
-			// переход на следующую страницу
-			//work
 			axios
 				.post(`${process.env.VUE_APP_API_URL}auth/register/`, this.form)
 				.then(() => {
@@ -97,16 +68,6 @@ export default {
 				.catch((err) => {
 					console.error(err);
 				});
-			// },
-			// async register() {
-			// 	try {
-			// 		const data = await this.$axios.post('/api/auth/register/', this.form);
-			// 		console.log(data);
-			// 		this.$router.push('/login');
-			// 	} catch {
-			// 		console.error('Ошибка регистрации');
-			// 	}
-			// },
 		},
 	},
 };
@@ -115,7 +76,7 @@ export default {
 <style lang="scss" scoped>
 @use '@/styles/form.scss';
 .form-page {
-	font-family: 'Gilroy';
+	font-family: 'Roboto', sans-serif;
 	display: flex;
 	background-color: #1e1e1e;
 	flex-direction: column;
@@ -137,15 +98,25 @@ export default {
 		text-decoration: none;
 		margin-top: 1.25rem;
 		font-size: 14px;
-		font-family: 'Gilroy';
+		font-family: 'Roboto', sans-serif;
+		font-weight: 200;
 	}
 
-	&__agreement {
-		font-weight: 300;
-		font-size: 0.875rem;
-		line-height: 130%;
-		margin-top: 0.625rem;
-		color: #f8f3e6;
+	&__link-text {
+		display: block;
+		width: 100%;
+		text-align: center;
+		font-weight: lighter;
+		color: #ffffff;
+		text-decoration: none;
+		margin-top: 0.5rem;
+		font-size: 14px;
+		font-family: 'Roboto', sans-serif;
+		font-weight: 200;
+	}
+
+	&__link-link {
+		color: #0fb9bc;
 	}
 
 	&__btn {
@@ -154,7 +125,7 @@ export default {
 		cursor: pointer;
 		border: none;
 		font: inherit;
-		font-family: 'Gilroy', sans-serif;
+		font-family: 'Roboto', sans-serif;
 		font-weight: 300;
 		background: #0fb9bc;
 		text-decoration: none;
