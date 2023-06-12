@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
 from program.models import Program
+from django.core.mail import send_mail
 
 
 
@@ -26,6 +27,13 @@ class UserViewSet(ModelViewSet):
         refresh = RefreshToken.for_user(user)
         response = Response()
         response.data = {'access': str(refresh.access_token)}
+        send_mail(
+            subject = "FIT registration",
+            message = "Thanks for your registration! Good luck!",
+            from_email = "fit@club.com",
+            recipient_list = [request.data['email']],
+            fail_silently = False
+        )
         return response
 
     @action(methods=['POST'], detail=False, url_path='login')

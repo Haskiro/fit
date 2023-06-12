@@ -59,7 +59,6 @@ const actions = {
 	},
 	// Регистрация
 	register(data) {
-		debugger;
 		return new Promise((resolve, reject) => {
 			axios({
 				url: `${process.env.VUE_APP_API_URL}auth//`,
