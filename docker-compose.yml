@@ -1,0 +1,42 @@
+version: "3.9"
+
+services:
+  api:
+    profiles: ["main"]
+    build:
+      context: /api/
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./api/static:/api/static
+      - ./api/media:/api/media
+    networks:
+      - myNetwork
+    ports:
+      - 8000:8000
+    env_file:
+      - ./api/.env
+    restart: always
+  app:
+    profiles: ["main"]
+    build:
+      context: /app/
+      dockerfile: ./Dockerfile
+    networks:
+      - myNetwork
+    ports:
+      - 8080:8080
+    restart: always
+    depends_on:
+      - api
+  mailhog:
+    image: mailhog/mailhog
+    profiles: ["mailhog-only"]
+    ports:
+      - 1025:1025
+      - 8025:8025
+    networks:
+      - myNetwork
+
+networks:
+  myNetwork:
+    driver: bridge
