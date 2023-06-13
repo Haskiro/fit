@@ -2,26 +2,26 @@
 
 ## start project 
 
-with docker:
+with docker:<br>
 `docker-compose --profile main up`
 
-manually:
-  frontend:
-    `npm install`
+manually:<br>
+  frontend:<br>
+    `npm install`<br>
     `npm run serve`
   
-  backend:
-    `python -m venv venv`
-    Windows
-    `venv\Script\active`
-    Linux and MacOS:
-    `source venv/bin/activate`
+  backend:<br>
+    `python -m venv venv`<br>
+    Windows<br>
+    `venv\Script\active`<br>
+    Linux and MacOS:<br>
+    `source venv/bin/activate`<br>
 
-    `pip install -r requirements.txt`
-    `python manage.py migrate`
-    `python manage.py createsuperuser`
-    `python manage.py runserver`
+    pip install -r requirements.txt
+    python manage.py migrate
+    python manage.py createsuperuser
+    python manage.py runserver
   
 
-start mailhog locally:
+start mailhog locally:<br>
 `docker-compose --profile mailhog-only up`
