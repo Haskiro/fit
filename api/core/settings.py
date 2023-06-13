@@ -24,17 +24,17 @@ env = environ.Env(
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Take environment variables from .env file
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # False if not in os.environ because of casting above
-DEBUG = env('DEBUG')
+DEBUG = env("DEBUG")
 
 # Raises Django's ImproperlyConfigured
 # exception if SECRET_KEY not in os.environ
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = env("SECRET_KEY")
 
 ALLOWED_HOSTS = ["*"]
 
@@ -51,12 +51,11 @@ INSTALLED_APPS = [
     "drf_yasg",
     "rest_framework",
     "corsheaders",
-    'rest_framework_simplejwt',
-
-    #Custom apps
-    'authentication',
-    'exercise',
-    'program',
+    "rest_framework_simplejwt",
+    # Custom apps
+    "authentication",
+    "exercise",
+    "program",
 ]
 
 MIDDLEWARE = [
@@ -91,7 +90,7 @@ TEMPLATES = [
 WSGI_APPLICATION = "core.wsgi.application"
 
 
-AUTH_USER_MODEL = 'authentication.User'
+AUTH_USER_MODEL = "authentication.User"
 
 
 # Database
@@ -152,18 +151,16 @@ CORS_ALLOW_CREDENTIALS = True
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
     )
 }
 
 
-SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(days=1)
-}
+SIMPLE_JWT = {"ACCESS_TOKEN_LIFETIME": timedelta(days=1)}
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_PORT = 1025

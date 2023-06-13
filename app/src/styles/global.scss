@@ -122,7 +122,7 @@ input {
 	min-height: 100vh;
 
 	& > div {
-		height: 100%;
+		min-height: 70vh;
 		flex: 1;
 	}
 }
