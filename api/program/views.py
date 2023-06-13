@@ -25,22 +25,29 @@ class ProgramViewSet(ModelViewSet):
 
     @action(methods=["POST"], detail=False)
     def add_exercise_to_program(self, request, pk=None):
-        data = request.data,
+        data = (request.data,)
         program = Program.objects.get(pk=pk)
         print(program)
         currentData = self.serializer_class(id=pk).data
         for exercise_id in data:
             try:
-                if (exercise_id not in currentData['exercises']):
+                if exercise_id not in currentData["exercises"]:
                     exercise = Exercise.objects.get(id=exercise_id)
-                    currentData['exercises'].append(exercise)
+                    currentData["exercises"].append(exercise)
                 else:
-                    return Response({"error": "exercise with id=" + str(exercise_id) + " already added"}, 402)
+                    return Response(
+                        {
+                            "error": "exercise with id="
+                            + str(exercise_id)
+                            + " already added"
+                        },
+                        402,
+                    )
             except Exercise.DoesNotExist:
                 return Response(
                     {"error": "exercise with id=" + exercise_id + "does not exist"}, 402
                 )
-        program.exercises.set(currentData['exercises'])
+        program.exercises.set(currentData["exercises"])
         program.save()
 
         return Response({"message": "exercises added"}, 201)
@@ -63,6 +70,5 @@ class ProgramViewSet(ModelViewSet):
     #             )
     #     user.programs.set(currentData['programs'])
     #     user.save()
-        
 
     #     return Response({"message": "programs added"}, 201)

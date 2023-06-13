@@ -4,23 +4,25 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('authentication', '0007_alter_user_groups_alter_user_user_permissions'),
+        ("authentication", "0007_alter_user_groups_alter_user_user_permissions"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='user',
-            options={'verbose_name': 'Пользователь', 'verbose_name_plural': 'Пользователи'},
+            name="user",
+            options={
+                "verbose_name": "Пользователь",
+                "verbose_name_plural": "Пользователи",
+            },
         ),
         migrations.AlterField(
-            model_name='user',
-            name='is_superuser',
-            field=models.BooleanField(default=False, verbose_name='Администратор'),
+            model_name="user",
+            name="is_superuser",
+            field=models.BooleanField(default=False, verbose_name="Администратор"),
         ),
         migrations.AlterModelTable(
-            name='user',
+            name="user",
             table=None,
         ),
     ]

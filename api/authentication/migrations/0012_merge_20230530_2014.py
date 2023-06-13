@@ -4,7 +4,7 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-    dependencies = [   
+    dependencies = [
         ("authentication", "0011_alter_user_programs"),
     ]
 
