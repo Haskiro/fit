@@ -7,4 +7,4 @@ router = DefaultRouter()
 
 router.register("programs", ProgramViewSet)
 router.register("exercises", ExerciseViewSet)
-router.register('auth', UserViewSet)
+router.register("auth", UserViewSet)

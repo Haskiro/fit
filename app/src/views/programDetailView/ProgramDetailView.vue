@@ -24,7 +24,7 @@
 							<p class="train-program__info-title">
 								{{ item.title }}
 							</p>
-							<p class="train-program__info-description">
+							<p class="train-program__info-description" :title="item.description">
 								{{ item.description }}
 							</p>
 						</div>
@@ -206,6 +206,10 @@ export default {
 		line-height: 28px;
 		letter-spacing: 0.4px;
 		color: #323232;
+		// max-width: 20ch;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 	}
 
 	&__plan {

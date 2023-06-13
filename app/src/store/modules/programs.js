@@ -29,11 +29,11 @@ export const programsModule = {
 	},
 	getters: {
 		sortProgramsByComplexity: (state) => (dir) => {
-			return state.programs.sort((a, b) => {
+			return state.programs.slice().sort((a, b) => {
 				if (dir === 'up') {
-					return PROGRAMS_COMPLEXITY[a] - PROGRAMS_COMPLEXITY[b];
+					return PROGRAMS_COMPLEXITY[a.difficulty] - PROGRAMS_COMPLEXITY[b.difficulty];
 				}
-				return PROGRAMS_COMPLEXITY[b] - PROGRAMS_COMPLEXITY[a];
+				return PROGRAMS_COMPLEXITY[b.difficulty] - PROGRAMS_COMPLEXITY[a.difficulty];
 			});
 		},
 		sortProgramsByNewness: (state) => {

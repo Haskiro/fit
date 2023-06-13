@@ -4,41 +4,50 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('program', '0003_program_exercises'),
-        ('authentication', '0003_user_login'),
+        ("program", "0003_program_exercises"),
+        ("authentication", "0003_user_login"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='user',
-            name='birthdate',
-            field=models.DateField(blank=True, default=None, null=True, verbose_name='Дата рождения'),
+            model_name="user",
+            name="birthdate",
+            field=models.DateField(
+                blank=True, default=None, null=True, verbose_name="Дата рождения"
+            ),
         ),
         migrations.AlterField(
-            model_name='user',
-            name='first_name',
-            field=models.CharField(blank=True, default=None, max_length=255, verbose_name='Имя'),
+            model_name="user",
+            name="first_name",
+            field=models.CharField(
+                blank=True, default=None, max_length=255, verbose_name="Имя"
+            ),
         ),
         migrations.AlterField(
-            model_name='user',
-            name='is_active',
-            field=models.BooleanField(blank=True, default=False, verbose_name='Активирован'),
+            model_name="user",
+            name="is_active",
+            field=models.BooleanField(
+                blank=True, default=False, verbose_name="Активирован"
+            ),
         ),
         migrations.AlterField(
-            model_name='user',
-            name='last_name',
-            field=models.CharField(blank=True, default=None, max_length=255, verbose_name='Фамилия'),
+            model_name="user",
+            name="last_name",
+            field=models.CharField(
+                blank=True, default=None, max_length=255, verbose_name="Фамилия"
+            ),
         ),
         migrations.AlterField(
-            model_name='user',
-            name='photo',
-            field=models.ImageField(blank=True, default='', upload_to='users/photos', verbose_name='Фото'),
+            model_name="user",
+            name="photo",
+            field=models.ImageField(
+                blank=True, default="", upload_to="users/photos", verbose_name="Фото"
+            ),
         ),
         migrations.AlterField(
-            model_name='user',
-            name='programs',
-            field=models.ManyToManyField(blank=True, to='program.program'),
+            model_name="user",
+            name="programs",
+            field=models.ManyToManyField(blank=True, to="program.program"),
         ),
     ]

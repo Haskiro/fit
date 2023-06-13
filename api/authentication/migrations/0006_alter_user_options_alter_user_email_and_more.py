@@ -4,43 +4,47 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('authentication', '0005_rename_login_user_username'),
+        ("authentication", "0005_rename_login_user_username"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='user',
+            name="user",
             options={},
         ),
         migrations.AlterField(
-            model_name='user',
-            name='email',
+            model_name="user",
+            name="email",
             field=models.EmailField(max_length=254, unique=True),
         ),
         migrations.AlterField(
-            model_name='user',
-            name='first_name',
+            model_name="user",
+            name="first_name",
             field=models.CharField(blank=True, max_length=30),
         ),
         migrations.AlterField(
-            model_name='user',
-            name='is_active',
-            field=models.BooleanField(default=True, verbose_name='Активирован'),
+            model_name="user",
+            name="is_active",
+            field=models.BooleanField(default=True, verbose_name="Активирован"),
         ),
         migrations.AlterField(
-            model_name='user',
-            name='last_name',
+            model_name="user",
+            name="last_name",
             field=models.CharField(blank=True, max_length=40),
         ),
         migrations.AlterField(
-            model_name='user',
-            name='username',
-            field=models.CharField(default=None, max_length=255, unique=True, verbose_name='Имя пользователя'),
+            model_name="user",
+            name="username",
+            field=models.CharField(
+                default=None,
+                max_length=255,
+                unique=True,
+                verbose_name="Имя пользователя",
+            ),
         ),
         migrations.AlterModelTable(
-            name='user',
-            table='users',
+            name="user",
+            table="users",
         ),
     ]
