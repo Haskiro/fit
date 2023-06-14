@@ -2,7 +2,12 @@
 	<div ref="page" class="form-page">
 		<h1 class="form-page__heading heading heading--h3">Вход</h1>
 
+		<div v-if="showError" class="form-page__error">
+			<p>Ошибка при входе</p>
+		</div>
+
 		<form class="form" @submit.prevent="login">
+			<div v-if="isLoading" class="form-page__is-loading">Загрузка...</div>
 			<div v-for="(input, i) in inputs" :key="i" class="form__input-container">
 				<label :for="input.name" class="visually-hidden">
 					{{ input.placeholder }}
@@ -14,12 +19,18 @@
 					:name="input.name"
 					class="input"
 					:placeholder="input.placeholder"
+					required
 				/>
 			</div>
 
 			<RouterLink to="#" class="form-page__link"> Забыли пароль? </RouterLink>
 
-			<input type="submit" :value="buttonText" class="form-page__btn btn btn--filled btn--huge" />
+			<input
+				type="submit"
+				:value="buttonText"
+				class="form-page__btn btn btn--filled btn--huge"
+				:disabled="isLoading"
+			/>
 		</form>
 
 		<RouterLink v-if="additional.hasOwnProperty('href')" :to="additional.href" class="form-page__link">
@@ -49,18 +60,25 @@ export default {
 				href: '/signup',
 				text: 'Нет аккаунта? Зарегистрироваться',
 			},
+			isLoading: false,
+			showError: false,
 		};
 	},
 	methods: {
 		login() {
+			this.isLoading = true;
 			this.$store
 				.dispatch('login', this.form)
 				.then((response) => {
+					this.isLoading = false;
 					console.log(response);
 					this.$router.push('/');
 				})
 				.catch((error) => {
-					this.error = error.response.data;
+					this.errors = error.response.data;
+					this.showError = true;
+					debugger;
+					this.isLoading = false;
 				});
 		},
 	},
@@ -78,9 +96,21 @@ export default {
 	align-items: center;
 	height: 100vh;
 	padding-bottom: 2rem;
+	position: relative;
 
 	&__heading {
 		margin-bottom: 3.5rem;
+	}
+
+	&__error {
+		margin-bottom: 10px;
+		color: red;
+	}
+
+	&__is-loading {
+		font-size: 25px;
+		color: #d3d0d0;
+		margin-top: 10px;
 	}
 
 	&__link {
