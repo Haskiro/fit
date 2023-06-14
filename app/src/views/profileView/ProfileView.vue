@@ -19,6 +19,9 @@
 						<img src="./assets/plan-icon.svg" alt="" class="aside-info__btn-icon" />
 						<p class="aside-info__btn-text">План тренировок</p>
 					</div>
+					<div class="aside-info__btn">
+						<button class="btn btn--filled" @click="handleLogout">Выйти</button>
+					</div>
 				</div>
 			</aside>
 			<div class="profile-page__trains-block trains-block">
@@ -62,10 +65,18 @@ export default {
 			},
 		],
 	}),
+	methods: {
+		handleLogout() {
+			this.$store.dispatch('logout').then(() => {
+				this.$router.push('/');
+			});
+		},
+	},
 };
 </script>
 
 <style lang="scss">
+@use '@/styles/form.scss';
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto:wght@400;700&display=swap');
 
 .profile-page {
@@ -81,6 +92,23 @@ export default {
 			flex-direction: column;
 		}
 	}
+}
+
+.btn {
+	text-align: center;
+	margin-top: 1.25rem;
+	display: inline-block;
+	cursor: pointer;
+	border: none;
+	font: inherit;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	background: #0fb9bc;
+	text-decoration: none;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	border-radius: 5px;
+	width: 100%;
 }
 
 .aside-info {

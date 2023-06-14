@@ -39,9 +39,11 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "drf_yasg",
+
     "rest_framework",
     "corsheaders",
     'rest_framework_simplejwt',
+    'oauth2_provider',
 
     #Custom apps
     'authentication',

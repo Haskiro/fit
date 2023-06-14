@@ -2,6 +2,8 @@ from django.db import models
 # from django.contrib.auth.models import Group
 from django.utils import timezone
 from program.models import Program
+from django.conf import settings
+from oauth2_provider.models import AbstractApplication
 
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
@@ -59,3 +61,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     class Meta: 
         verbose_name = 'Пользователь'
         verbose_name_plural = 'Пользователи'
+
+class OAuthApplication(AbstractApplication):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
