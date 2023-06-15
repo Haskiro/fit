@@ -23,13 +23,14 @@
 			</aside>
 			<div class="profile-page__trains-block trains-block">
 				<h2 class="trains-block__title">Мои тренировки</h2>
-				<ul class="trains-block__list">
+				<ul v-if="user.programs_data?.length > 0" class="trains-block__list">
 					<li v-for="program in user.programs_data" :key="program.id" class="trains-block__item">
 						<router-link :to="`/train-programs/${program.id}`">
 							<TrainProgramCard v-bind="program" />
 						</router-link>
 					</li>
 				</ul>
+				<p v-else class="trains-block__plug">Еще ни одной тренировки не добавлено</p>
 			</div>
 		</div>
 	</div>
@@ -85,10 +86,6 @@ export default {
 		width: 100%;
 	}
 
-	@media (max-width: 1024px) {
-		width: 90%;
-	}
-
 	&__info-block {
 		width: 90%;
 		height: 130px;
@@ -108,6 +105,7 @@ export default {
 		border-radius: 50%;
 		margin-left: 12px;
 		margin-right: 12px;
+		object-fit: cover;
 
 		@media (max-width: 750px) {
 			margin: 0;
@@ -166,25 +164,34 @@ export default {
 }
 
 .trains-block {
-	display: flex;
-	justify-content: center;
-	align-items: flex-start;
-	flex-direction: column;
+	// display: flex;
+	// justify-content: center;
+	// align-items: flex-start;
+	// flex-direction: column;
+
 	margin-left: 10%;
 	margin-top: 40px;
 	flex-grow: 2;
 
-	@media (max-width: 750px) {
-		margin-left: 0px;
+	&__plug {
+		font-family: 'Roboto', sans-serif;
+		font-size: 20px;
+		font-weight: 400;
+		line-height: 24px;
+		color: #000000;
+		text-align: center;
 	}
 
 	@media (max-width: 1024px) {
 		width: 100%;
 		justify-content: center;
 		align-items: center;
-		margin-left: 0;
+		margin-left: 20px;
 	}
 
+	@media (max-width: 750px) {
+		margin-left: 0px;
+	}
 	&__title {
 		font-family: 'Roboto', sans-serif;
 		font-size: 32px;
@@ -192,6 +199,7 @@ export default {
 		line-height: 24px;
 		color: #000000;
 		margin-bottom: 40px;
+		text-align: center;
 	}
 
 	&__list {

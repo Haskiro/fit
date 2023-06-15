@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from exercise.models import Exercise
 from os import sep
-from functools import reduce
 
 
 def get_relative_path(obj):

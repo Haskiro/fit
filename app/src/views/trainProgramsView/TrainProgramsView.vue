@@ -46,19 +46,19 @@
 				</div>
 			</div>
 		</div>
-		<ul class="train-programs__list container">
+		<ul v-if="programs.length > 0" class="train-programs__list container">
 			<li v-for="program in programs" :key="program.id" class="train-programs__item">
 				<router-link :to="`/train-programs/${program.id}`">
 					<TrainProgramCard v-bind="program" />
 				</router-link>
 			</li>
 		</ul>
+		<p v-else class="train-programs__plug">Не найдено ни одной программы</p>
 	</div>
 </template>
 
 <script>
 import TrainProgramCard from '@/components/trainProgramCard/TrainProgramCard.vue';
-// import { mapState } from 'vuex';
 import store from '@/store';
 
 export default {
@@ -76,11 +76,6 @@ export default {
 		},
 		programs: [],
 	}),
-	// computed: {
-	// 	...mapState({
-	// 		programs: (state) => state.programs.programs,
-	// 	}),
-	// },
 
 	async mounted() {
 		await store.dispatch('programs/fetchAllPrograms');
@@ -89,7 +84,6 @@ export default {
 	methods: {
 		handleSearch: function (ev) {
 			const str = ev.target[0].value;
-			console.log(store.getters['programs/searchProgramsByTitle'](str));
 			this.programs = store.getters['programs/searchProgramsByTitle'](str);
 		},
 		handleFilter: function (type) {
@@ -122,6 +116,11 @@ export default {
 
 <style lang="scss" scoped>
 .train-programs {
+	&__plug {
+		font-size: 20px;
+		text-align: center;
+		margin: 100px 0;
+	}
 	&__teaser {
 		// height: calc(100vh - 127px);
 		height: 510px;
