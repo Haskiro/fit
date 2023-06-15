@@ -36,6 +36,25 @@ services:
       - 8025:8025
     networks:
       - myNetwork
+  # redis:
+  #   image: redis
+  #   profiles: ["main"]
+  #   ports:
+  #     - "6379:6379"
+  #   networks:
+  #     - myNetwork
+  # celery:
+  #   build: ./api/core
+  #   profiles: ["main"]
+  #   command: celery -A core worker -l INFO --pool=solo && celery -A core beat -l INFO
+  #   depends_on:
+  #     - redis
+  # celery-beat:
+  #   build: ./api/core
+  #   profiles: ["main"]
+  #   command: celery -A core beat
+  #   depends_on:
+  #     - redis
 
 networks:
   myNetwork:
