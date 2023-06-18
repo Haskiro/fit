@@ -6,6 +6,9 @@
 					<img :src="user.photo" alt="" class="aside-info__avatar" />
 					<p class="aside-info__name">{{ user.first_name + ' ' + user.last_name }}</p>
 				</div>
+				<div v-if="message" class="aside-info__message">
+					<p class="aside-info__text">Message from admin: {{ message }}</p>
+				</div>
 				<div class="aside-info__btn-list">
 					<div class="aside-info__btn aside-info__btn--bg-color-blue">
 						<img src="./assets/trains-icon.svg" alt="" class="aside-info__btn-icon" />
@@ -38,6 +41,7 @@
 
 <script>
 import TrainProgramCard from '@/components/trainProgramCard/TrainProgramCard.vue';
+import { centrifuge, sub } from '../../centrifugo';
 import store from '@/store';
 
 export default {
@@ -45,11 +49,18 @@ export default {
 	components: { TrainProgramCard },
 	data: () => ({
 		user: {},
+		centrifuge,
+		message: '',
 	}),
 	async mounted() {
 		await store.dispatch('getUserData');
 		this.user = store.getters['currentUser'];
-		console.log(this.user);
+		centrifuge.connect();
+		sub.subscribe();
+		const v = this;
+		sub.on('publication', function (ctx) {
+			v.message = ctx.data.value;
+		});
 	},
 };
 </script>
@@ -84,6 +95,15 @@ export default {
 	margin-bottom: 20px;
 	@media (max-width: 750px) {
 		width: 100%;
+	}
+
+	&__message {
+		padding: 10px;
+	}
+
+	&__text {
+		font-size: 18px;
+		font-weight: 500;
 	}
 
 	&__info-block {

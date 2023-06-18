@@ -5,8 +5,8 @@ from os import sep
 
 
 def get_relative_path(obj):
-    if obj.photo == '':
-        return ''
+    if obj.photo == "":
+        return ""
     separated_path = obj.photo.file.name.split(sep)
     relative_path = "/" + "/".join(separated_path[separated_path.index("media") :])
     return relative_path
