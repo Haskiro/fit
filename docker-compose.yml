@@ -60,6 +60,21 @@ services:
   #   command: celery -A core beat
   #   depends_on:
   #     - redis
+  centrifugo:
+    profiles: ["main"]
+    image: centrifugo/centrifugo:v4
+    volumes:
+      - ./centrifugo.config.json:/centrifugo/config.json
+    command: centrifugo -c config.json
+    ports:
+      - 8002:8002
+    ulimits:
+      nofile:
+        soft: 65535
+        hard: 65535
+    networks:
+      - myNetwork
+    restart: always
 
 networks:
   myNetwork:
