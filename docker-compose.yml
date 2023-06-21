@@ -48,6 +48,37 @@ services:
     networks:
       - myNetwork
     restart: always
+  celery:
+    profiles: ["main"]
+    build:
+      context: /api/
+      dockerfile: ./Dockerfile
+    command: celery -A core worker -l info
+    volumes:
+      - ./:/usr/src/app/
+    env_file:
+      - ./api/.env
+    depends_on:
+      - redis
+    restart: always
+    networks:
+      - myNetwork
+
+  celery-beat:
+    profiles: ["main"]
+    build:
+      context: /api/
+      dockerfile: ./Dockerfile
+    command: celery -A core beat -l info
+    volumes:
+      - ./:/usr/src/app/
+    env_file:
+      - ./api/.env
+    depends_on:
+      - redis
+    restart: always
+    networks:
+      - myNetwork
   # celery:
   #   build: ./api/core
   #   profiles: ["main"]

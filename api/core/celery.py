@@ -21,5 +21,9 @@ app.conf.beat_schedule = {
     'counter': {
         'task': 'program.tasks.count_programs',
         'schedule': 60.0,
-    }
+    },
+    "write_visit_log": {
+        "task": "visit.tasks.write_visit_log_task",
+        "schedule": 20.0,
+    },
 }

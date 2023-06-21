@@ -32,12 +32,12 @@ class ProgramViewSet(ModelViewSet):
     def cached_get_programs(self, request):
         if 'programs' in cache:
             # get results from cache 
-            programs = cache.get('product')
+            programs = cache.get('programs')
             return Response(programs)
         else:
             programs = Program.objects.all()
             data = self.serializer_class(programs, many=True).data
-            cache.set(programs, data, timeout=CACHE_TTL)
+            cache.set('programs', data, timeout=CACHE_TTL)
             return Response(data)
 
     @action(methods=["POST"], detail=False)
