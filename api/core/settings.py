@@ -76,6 +76,10 @@ INSTALLED_APPS = [
     "authentication",
     "exercise",
     "program",
+
+    'oauth2_provider',
+    'social_django',
+    'drf_social_oauth2',
 ]
 
 MIDDLEWARE = [
@@ -102,6 +106,8 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -176,6 +182,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication', 
+        'drf_social_oauth2.authentication.SocialAuthentication',
     )
 }
 
@@ -190,3 +198,17 @@ EMAIL_PORT = 1025
 # EMAIL_HOST_PASSWORD = '123456'
 # # EMAIL_USE_TLS=True
 # DEFAULT_FROM_EMAIL = 'fit@club.com'
+
+AUTHENTICATION_BACKENDS = (
+   'social_core.backends.github.GithubOAuth2',
+
+   'drf_social_oauth2.backends.DjangoOAuth2',
+   'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_GITHUB_KEY = '8d5ca2740862bf15d6e2'
+SOCIAL_AUTH_GITHUB_SECRET = '140d28e090c6832a31d443b45d983f5088bfb95b'
+
+# DRFSO2_PROPRIETARY_BACKEND_NAME
+# DRFSO2_URL_NAMESPACE
+# ACTIVATE_JWT
