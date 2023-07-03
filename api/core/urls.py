@@ -52,6 +52,7 @@ urlpatterns = [
     ),
     path("admin/", admin.site.urls),
     path("api/", include(router.urls)),
+    re_path(r'^auth/', include('drf_social_oauth2.urls', namespace='drf'))
 ]
 
 if settings.DEBUG:

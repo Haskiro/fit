@@ -6,6 +6,11 @@ from rest_framework import permissions
 from rest_framework.decorators import action
 from exercise.models import Exercise
 from rest_framework.response import Response
+from django.core.cache import cache
+from django.conf import settings
+from django.core.cache.backends.base import DEFAULT_TIMEOUT
+
+CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
 
 
 class IsAdminOrReadOnly(permissions.BasePermission):
@@ -23,11 +28,22 @@ class ProgramViewSet(ModelViewSet):
     filter_backends = (SearchFilter,)
     permission_classes = [IsAdminOrReadOnly]
 
+    @action(methods=["GET"], detail=False)
+    def cached_get_programs(self, request):
+        if 'programs' in cache:
+            # get results from cache 
+            programs = cache.get('product')
+            return Response(programs)
+        else:
+            programs = Program.objects.all()
+            data = self.serializer_class(programs, many=True).data
+            cache.set(programs, data, timeout=CACHE_TTL)
+            return Response(data)
+
     @action(methods=["POST"], detail=False)
     def add_exercise_to_program(self, request, pk=None):
         data = (request.data,)
         program = Program.objects.get(pk=pk)
-        print(program)
         currentData = self.serializer_class(id=pk).data
         for exercise_id in data:
             try:
